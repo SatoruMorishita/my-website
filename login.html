@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン画面</title>
+  <style>
+    body {
+      background-color: #f5f5dc;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .login-box button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-box button:hover {
+      background-color: navy;
+    }
+    #loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+  }
+　
+　
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>ログイン</h2>
+    <input type="text" id="username" placeholder="ユーザー名">
+    <input type="password" id="password" placeholder="パスワード">
+    <button onclick="login()">ログイン</button>
+  </div>
+  <div id="loading" style="display:none; margin-top:20px;">
+  ⏳ 読み込み中...
+
+
+</div>
+  
+  <script>
+
+
+</script>
+ 
+    <div id="loading">⏳ 読み込み中...</div>
+  <div id="loginAlert" class="alert-box">ログイン画面</div>
+
+  <script>
+      function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+
+    if (user === "admin" && pass === "1234") {
+      // ローディング表示
+      document.getElementById("loading").style.display = "block";
+
+      // 1秒待ってから遷移
+      setTimeout(() => {
+        window.location.href = "main.html";
+      }, 1000);
+    } else {
+      alert("ユーザー名またはパスワードが違います");
+    }
+  }
+
+  // Enterキーでもログイン
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      login();
+    }
+  });
+　
+　// ページ表示時にアラートを1秒だけ表示
+window.addEventListener("load", () => {
+  const alertBox = document.getElementById("loginAlert");
+  alertBox.style.display = "block";
+
+  setTimeout(() => {
+    alertBox.style.display = "none";
+  }, 1000);
+});
+
+    window.addEventListener("load", () => {
+      const alertBox = document.getElementById("loginAlert");
+      alertBox.style.display = "block";
+      setTimeout(() => {
+        alertBox.style.display = "none";
+      }, 1000);
+    });
+    window.addEventListener("load", () => {
+    document.getElementById("username").focus();
+  });
+  </script>
+</body>
+<style>
+.alert-box {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 0 0 5px 5px;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+</style>
+</html>
