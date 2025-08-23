@@ -39,7 +39,7 @@
     .login-box button:hover {
       background-color: navy;
     }
-    #loading {
+    .loading {
     display: none;
     position: fixed;
     top: 50%;
