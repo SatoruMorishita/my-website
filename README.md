@@ -1,3 +1,2 @@
-# HP_tool
-hp_tool
-url:https://satorumorishita.github.io/HP_tool/
+#my-website
+url:https://satorumorishita.github.io/my-website/
