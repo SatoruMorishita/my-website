@@ -5,7 +5,7 @@
 
     if (user === "admin" && pass === "1234") {
       // ローディング表示
-      document.getElementById("loading").style.display = "block";
+      document.getElementById(".loading").style.display = "block";
 
       // 1秒待ってから遷移
       setTimeout(() => {
