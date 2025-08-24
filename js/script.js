@@ -3,7 +3,7 @@
     const user = document.getElementById("username").value;
     const pass = document.getElementById("password").value;
 
-    if (user === "admin" && pass === "1234") {
+    if (user === "Satoru" && pass === "99991021" {
       // ローディング表示
       document.getElementById("loading").style.display = "block";
 
@@ -24,14 +24,6 @@
   });
 　
 　// ページ表示時にアラートを1秒だけ表示
-window.addEventListener("load", () => {
-  const alertBox = document.getElementById("loginAlert");
-  alertBox.style.display = "block";
-
-  setTimeout(() => {
-    alertBox.style.display = "none";
-  }, 1000);
-});
 
     window.addEventListener("load", () => {
       const alertBox = document.getElementById("loginAlert");
