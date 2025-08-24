@@ -10,7 +10,7 @@
     .alert-box {
       display: none;
       position: fixed;
-      top: 0%;
+      top: 0;
       left: 50%;
       transform: translateX(-50%);
       background-color: #4caf50;
