@@ -8,19 +8,19 @@
       height: 100vh;
     }
     .alert-box {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #4caf50;
-  color: white;
-  padding: 15px 30px;
-  border-radius: 0 0 5px 5px;
-  font-size: 16px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  z-index: 9999;
-}
+      display: none;
+      position: fixed;
+      top: 0%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4caf50;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 0 0 5px 5px;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 9999;
+     }
     .login-box {
       background-color: white;
       padding: 40px;
@@ -53,19 +53,19 @@
       background-color: navy;
     }
     #loading {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    z-index: 9999;
-  }
+     display: none;
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     font-size: 24px;
+     font-weight: bold;
+     background-color: rgba(255, 255, 255, 0.9);
+     padding: 20px 40px;
+     border-radius: 10px;
+     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+     z-index: 9999;
+    }
 　
 　
   </style>
