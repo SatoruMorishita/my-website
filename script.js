@@ -1,5 +1,4 @@
-
-  <script>
+ <script>
       function login() {
     const user = document.getElementById("username").value;
     const pass = document.getElementById("password").value;
@@ -32,8 +31,8 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     alertBox.style.display = "none";
   }, 1000);
-});
+ });
     window.addEventListener("load", () => {
     document.getElementById("username").focus();
   });
-  </script>
+ </script>
