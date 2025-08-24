@@ -9,7 +9,7 @@
 
       // 1秒待ってから遷移
       setTimeout(() => {
-        window.location.href = "about.html";
+        window.location.href = "/my-website/about.html";
       }, 1000);
     } else {
       alert("ユーザー名またはパスワードが違います");
