@@ -32,7 +32,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
   const confirmLogout = confirm("ログアウトします。よろしいですか？");
   if (confirmLogout) {
     // 「はい」が選ばれた場合のみログイン画面へ遷移
-    window.location.href = "login.html?status=loggedout";
+    window.location.href = "index.html?status=loggedout";
   } else {
     // 「いいえ」の場合は何もしない（キャンセル）
     console.log("ログアウトをキャンセルしました。");
