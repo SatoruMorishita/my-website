@@ -1,5 +1,5 @@
 /*index.html*/
-  body {
+  body.index-page{
       background-color: #f5f5dc;
       font-family: sans-serif;
       display: flex;
