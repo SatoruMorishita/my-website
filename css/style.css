@@ -69,7 +69,7 @@
 
 
 /*about.html*/
-body {
+body.about-page{
   margin: 10;
   font-family: sans-serif;
   background-color: #f5f5dc;
