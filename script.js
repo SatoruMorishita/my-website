@@ -34,4 +34,3 @@ window.addEventListener("load", () => {
     window.addEventListener("load", () => {
     document.getElementById("username").focus();
   });
- </script>
