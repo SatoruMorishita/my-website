@@ -169,14 +169,12 @@ body {
   padding: 7px;
   border-bottom: 2px solid #ccc;
 }
-
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 0px;
 }
-
 .circle {
   width: 180px;
   height: 180px;
@@ -192,7 +190,7 @@ body {
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.side-menu a:hover {
+.side-menu a:hover{
   background-color: #e0e0e0; /* 背景色を変更 */
   color: #0000ff;            /* 文字色を変更（青） */
   padding: 10px;              /* 少し余白を追加して見やすく */
