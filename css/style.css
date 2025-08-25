@@ -1,3 +1,12 @@
+   body {
+      background-color: #f5f5dc;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
     .alert-box {
       display: none;
       position: fixed;
@@ -71,11 +80,4 @@
      box-shadow: 0 0 10px rgba(0,0,0,0.3);
      z-index: 9999;
     }
-　　 body {
-      background-color: #f5f5dc;
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+　　 
