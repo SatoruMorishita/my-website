@@ -88,3 +88,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
       highlightAll();
     }
   });
+//API呼ぶコードrenderでpython
+fetch("https://your-app.onrender.com/users")
+.then(res => res.json())
+.then(data => { /* 表形式に変換して描画 */ });
