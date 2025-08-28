@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>出荷済みデータ</title>
+</head>
+<body>
+  <h1>出荷済みデータ一覧</h1>
+  <table border="1">
+    <tr>
+      <th>ID</th>
+      <th>商品名</th>
+      <th>数量</th>
+      <th>出荷日</th>
+    </tr>
+    {% for row in shipments %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>{{ row[3] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
