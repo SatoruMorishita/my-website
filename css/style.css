@@ -222,6 +222,8 @@ body.about-page{
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   z-index: 1000;
   overflow: auto;
+  left: 30%;
+  width: 65%;
 }
 
 .modal-content {
