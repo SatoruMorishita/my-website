@@ -216,7 +216,7 @@ body.about-page{
   top: 10%;
   left: 220px; /* サイドメニューの幅 + 余白（例：200px + 20px） */
   width: calc(100% - 100px); /* 画面幅からサイドメニュー分を引く */
-  height: 70%;
+  height: 85%;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
