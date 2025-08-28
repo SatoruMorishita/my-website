@@ -174,7 +174,6 @@ body.about-page{
   flex-wrap: wrap;
   gap: 20px;
   margin-top: 0px;
-  text-decoration: none;
 }
 .circle {
   width: 180px;
