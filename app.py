@@ -34,6 +34,7 @@ def index():
 if __name__ == '__main__':
     app.run()
 
+#追加
 @app.route('/shipments')
 def shipments():
     download_db()
