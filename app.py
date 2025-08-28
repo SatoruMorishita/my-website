@@ -21,11 +21,14 @@ def get_data():
     conn.close()
     return rows
 
-@app.route('/get_db')
-def get_db():
-    download_db()
-    data = get_data()
-    return jsonify(data)
+#@app.route('/get_db')
+#def get_db():
+ #   download_db()
+  #  data = get_data()
+   # return jsonify(data)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run()
