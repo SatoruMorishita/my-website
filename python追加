@@ -1,20 +1,22 @@
+from flask import Flask, jsonify
 import sqlite3
 import requests
-from flask import Flask, jsonify
+import os
 
 app = Flask(__name__)
-
-GITHUB_DB_URL = https://raw.githubusercontent.com/morishita/sqlite-demo/main/data.db
+DB_PATH = "data.db"
+GITHUB_DB_URL = "https://raw.githubusercontent.com/ユーザー名/リポジトリ名/main/data.db"
 
 def download_db():
-    response = requests.get(GITHUB_DB_URL)
-    with open("プラン済み.db", "wb") as f:
-        f.write(response.content)
+    if not os.path.exists(DB_PATH):
+        response = requests.get(GITHUB_DB_URL)
+        with open(DB_PATH, "wb") as f:
+            f.write(response.content)
 
 def get_data():
-    conn = sqlite3.connect("プラン済み.db")
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users")  # 任意のテーブル名に変更
+    cursor.execute("SELECT * FROM users")  # 任意のテーブル名
     rows = cursor.fetchall()
     conn.close()
     return rows
@@ -26,4 +28,4 @@ def get_db():
     return jsonify(data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
