@@ -8,11 +8,6 @@
       document.getElementById("loading").style.display = "block";
     }
         
-    document.getElementById("password").addEventListener("keydown", function(event) {
-   if (event.key === "Enter") {
-    login();
-   }
-        
       // 1秒待ってから遷移
       setTimeout(() => {
         window.location.href = "about.html";
@@ -22,6 +17,10 @@
     }
   }
 
+ //document.getElementById("password").addEventListener("keydown", function(event) {
+   //if (event.key === "Enter") {
+    //login();
+   //}
 
 //about.html
 document.getElementById("searchInput").addEventListener("keydown", function(event) {
