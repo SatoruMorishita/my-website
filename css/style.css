@@ -228,9 +228,6 @@ body.about-page{
 
 .modal-content {
   padding: 20px;
-  position: fixed;
-  top: 0;
-  right: 0;
 }
 
 .close-btn {
