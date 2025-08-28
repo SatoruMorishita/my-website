@@ -2,15 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>GitHub DB表示</title>
+  <title>GitHub SQLite表示</title>
 </head>
 <body>
-  <button onclick="loadDB()">GitHub DB表示</button>
+  <button onclick="loadDB()">DB表示</button>
   <div id="result"></div>
 
   <script>
     function loadDB() {
-      fetch('/get_db')
+      fetch('https://your-render-app.onrender.com/get_db')  // ← Render の URL に変更
         .then(res => res.json())
         .then(data => {
           document.getElementById('result').innerHTML =
