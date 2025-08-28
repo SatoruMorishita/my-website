@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub DB表示</title>
+</head>
+<body>
+  <button onclick="loadDB()">GitHub DB表示</button>
+  <div id="result"></div>
+
+  <script>
+    function loadDB() {
+      fetch('/get_db')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('result').innerHTML =
+            '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        });
+    }
+  </script>
+</body>
+</html>
