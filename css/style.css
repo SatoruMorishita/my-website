@@ -230,12 +230,14 @@ body.about-page{
   padding: 20px;
 }
 .header-actions {
-  position: fixed;
-  top: 16px;
-  right: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
   display: flex;
-  gap: 8px;
+  gap: 8px; /* ボタン間の余白 */
+  padding: 8px;
 }
+
 
 .close-btn {
   float: right;
