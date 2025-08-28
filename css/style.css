@@ -214,8 +214,8 @@ body.about-page{
   display: none;
   position: fixed;
   top: 10%;
-  left: 10%;
-  width: 80%;
+  left: 220px; /* サイドメニューの幅 + 余白（例：200px + 20px） */
+  width: calc(100% - 240px); /* 画面幅からサイドメニュー分を引く */
   height: 70%;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 10px;
