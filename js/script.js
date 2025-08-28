@@ -3,7 +3,7 @@
     const user = document.getElementById("username").value;
     const pass = document.getElementById("password").value;
 
-    if (user === "admin" && pass === "1234") {
+    if (user === "admin" && pass === "12341991") {
       // ローディング表示
       document.getElementById("loading").style.display = "block";
 
