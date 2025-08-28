@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 DB_PATH = "data.db"
-GITHUB_DB_URL = "https://raw.githubusercontent.com/ユーザー名/リポジトリ名/main/data.db"
+GITHUB_DB_URL = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/プラン済み.db"
 
 def download_db():
     if not os.path.exists(DB_PATH):
@@ -16,7 +16,7 @@ def download_db():
 def get_data():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users")  # 任意のテーブル名
+    cursor.execute("SELECT * FROM shipments")  # 任意のテーブル名
     rows = cursor.fetchall()
     conn.close()
     return rows
