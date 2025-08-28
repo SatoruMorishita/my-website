@@ -1,11 +1,24 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>出荷データビューア</title>
+  <title>ログイン画面</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <h1>出荷データを表示するには /get_db にアクセスしてね！</h1>
+<body class="index-page">
+  <div class="login-box">
+    <h2>ログイン</h2>
+    <input type="text" id="username" placeholder="ユーザー名">
+    <input type="password" id="password" placeholder="パスワード">
+    <button onclick="login()">ログイン</button>
+  </div>
+  <div id="loading" style="display:none; margin-top:20px;">
+  ⏳ 読み込み中...
+  </div>
+
+  <div id="loginAlert" class="alert-box">ログイン画面</div>
+  
+  <script src="js/script.js"></script>
 </body>
 </html>
+
