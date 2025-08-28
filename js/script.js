@@ -6,7 +6,12 @@
     if (user === "admin" && pass === "12341991") {
       // ローディング表示
       document.getElementById("loading").style.display = "block";
-
+　　
+    document.getElementById("password").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    login();
+  }
+        
       // 1秒待ってから遷移
       setTimeout(() => {
         window.location.href = "about.html";
