@@ -41,14 +41,30 @@
       <div class="header-box">Order Date</div>
       <br><br>
       <div class="container">
-        <a href="/未プラン"><div class="circle" onclick="sayHello()">未プラン</div></a>
-        <a href="/未プラン"><div class="circle" onclick="sayHello()">プラン済み</div></a>
-        <a href="/未プラン"><div class="circle" onclick="sayHello()">出荷済み<br>&nbsp;&nbsp;&nbsp;7日分</div></a>
-        <a href="/未プラン"><div class="circle" onclick="sayHello()">Tracking Null</div></a>
-        <a href="/未プラン"><div class="circle" onclick="sayHello()">Hub Null<br>&nbsp;or<br>&nbsp;Wrong</div></a>
-        <a href="/未プラン"><div class="circle" onclick="sayHello()">当日出荷表</div></a>
-        <a href="/未プラン"><div class="circle" onclick="sayHello()">翌日出荷表</div></a>
-        <a href="/未プラン"><div class="circle" onclick="sayHello()">その他</div></a>
+        <a href="#" onclick="openModal('未プラン', '<p>ここに当日出荷データを表示</p>')">
+  　　　  <div class="circle">未プラン<br>&nbsp;&nbsp;&nbsp;7日分</div>
+　　　　 </a>
+        <a href="#" onclick="openModal('プラン済み', '<p>ここに当日出荷データを表示</p>')">
+  　　　  <div class="circle">プラン済み<br>&nbsp;&nbsp;&nbsp;7日分</div>
+　　　　 </a>
+        <a href="#" onclick="openModal('出荷済み7日分', '<p>ここに当日出荷データを表示</p>')">
+  　　　  <div class="circle">出荷済み<br>&nbsp;&nbsp;&nbsp;7日分</div>
+　　　　 </a>
+        <a href="#" onclick="openModal('Tracking Null', '<p>ここに当日出荷データを表示</p>')">
+  　　　  <div class="circle">Tracking Null</div>
+　　　　 </a>
+        <a href="#" onclick="openModal('Hub Null', '<p>ここに当日出荷データを表示</p>')">
+  　　　  <div class="circle">Hub Null<br>&nbsp;or<br>&nbsp;Wrong</div>
+　　　　 </a>
+        <a href="#" onclick="openModal('当日出荷表', '<p>ここに当日出荷データを表示</p>')">
+  　　　  <div class="circle">当日出荷表</div>
+　　　　 </a>
+        <a href="#" onclick="openModal('翌日出荷表', '<p>ここに当日出荷データを表示</p>')">
+  　　　  <div class="circle">翌日出荷表</div>
+　　　　 </a>
+        <a href="#" onclick="openModal('その他', '<p>ここに当日出荷データを表示</p>')">
+  　　　  <div class="circle">その他</div>
+　　　　 </a>
       </div>
     </div>
   </div>
@@ -65,6 +81,7 @@
 <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
