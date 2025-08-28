@@ -33,3 +33,9 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+
+@app.route('/shipments')
+def shipments():
+    download_db()
+    data = get_data()
+    return render_template('shipments.html', shipments=data)
