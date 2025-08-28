@@ -92,3 +92,15 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
 fetch("https://your-app.onrender.com/users")
 .then(res => res.json())
 .then(data => { /* 表形式に変換して描画 */ });
+
+//追加分
+function openModal(title, dataHtml) {
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("modalData").innerHTML = dataHtml;
+  document.getElementById("dataModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("dataModal").style.display = "none";
+}
+
