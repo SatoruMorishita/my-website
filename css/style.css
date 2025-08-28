@@ -69,6 +69,10 @@
 
 
 /*about.html*/
+a {
+  text-decoration: none;
+}
+
 body.about-page{
   margin: 10;
   font-family: sans-serif;
