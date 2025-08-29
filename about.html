@@ -68,9 +68,38 @@
       </div>
     </div>
   </div>
+/*追加*/
+  <div id="dataModal" class="modal">
+  <div class="modal-content">
+    <div class="actions">
+      <span class="close-btn" onclick="closeModal()">×</span>
+    </div>
+    <div id="modalTitle">出荷済み7日分</div>
+    <div id="modalData">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>商品名</th>
+          <th>数量</th>
+          <th>出荷日</th>
+        </tr>
+        {% for row in shipments %}
+        <tr>
+          <td>{{ row[0] }}</td>
+          <td>{{ row[1] }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
 　<script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
