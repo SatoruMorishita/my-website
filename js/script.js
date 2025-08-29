@@ -110,3 +110,9 @@ function closeModal() {
   document.getElementById("dataModal").style.display = "none";
 }
 
+function openModal(title) {
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("dataModal").style.display = "block";
+}
+
+
