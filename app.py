@@ -44,3 +44,8 @@ def index():
     data = get_data()
     return render_template('出荷済み.html', shipments=data)
 
+@app.route('/about')
+def about():
+    download_db()
+    data = get_data()
+    return render_template('about.html', shipments=data)
