@@ -35,8 +35,8 @@ if __name__ == '__main__':
     app.run()
 
 #追加
-@app.route('/shipments')
+@app.route('/出荷済み')
 def shipments():
     download_db()
     data = get_data()
-    return render_template('shipments.html', shipments=data)
+    return render_template('出荷済み.html', shipments=data)
