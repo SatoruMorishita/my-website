@@ -27,9 +27,6 @@ def get_data():
  #   download_db()
   #  data = get_data()
    # return jsonify(data)
-@app.route('/')
-def index():
-    return render_template('出荷済み.html')
 
 if __name__ == '__main__':
     app.run()
@@ -40,3 +37,10 @@ def shipments():
     download_db()
     data = get_data()
     return render_template('出荷済み.html', shipments=data)
+
+@app.route('/')
+def index():
+    download_db()
+    data = get_data()
+    return render_template('出荷済み.html', shipments=data)
+
