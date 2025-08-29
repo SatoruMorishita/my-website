@@ -21,6 +21,26 @@
   </div>
 </div>
 
+  <div id="modalData">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>商品名</th>
+      <th>数量</th>
+      <th>出荷日</th>
+    </tr>
+    {% for row in shipments %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>{{ row[3] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+
 <script src="static/js/script.js"></script>
 </body>
 </html>
