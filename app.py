@@ -37,7 +37,7 @@ if __name__ == '__main__':
 def api_plan():
     download_db()
     data = get_data()
-    return render_template('プラン済み.html', shipments=data)
+    return render_template('planned.html', shipments=data)
 
 @app.route('/')
 def index():
