@@ -94,10 +94,14 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
       highlightAll();
     }
   });
-//API呼ぶコードrenderでpython
-fetch("https://your-app.onrender.com/users")
-.then(res => res.json())
-.then(data => { /* 表形式に変換して描画 */ });
+//追加8/30
+function loadPlanData() {
+  fetch('https://my-website-xqnf.onrender.com/api/plan')
+    .then(res => res.text())
+    .then(html => {
+      openModal('プラン済み', html);
+    });
+}
 
 //追加分
 //function openModal(title, dataHtml) {
