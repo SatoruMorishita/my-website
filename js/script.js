@@ -118,3 +118,12 @@ function triggerDeploy() {
   fetch("https://my-website-xpnf.onrender.com/trigger", { method: "POST" })
     .then(res => res.ok ? alert("デプロイ開始！") : alert("失敗！"));
 }
+
+function loadPlanData() {
+  fetch("/get_db")
+    .then(res => res.json())
+    .then(data => {
+      // ここで data を使って HTML に表示する処理を書く
+      console.log(data);
+    });
+}
