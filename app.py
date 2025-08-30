@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, request
+from flask import Flask,jsonify,request
 import os
 
 app = Flask(__name__)
@@ -18,6 +18,12 @@ def trigger():
     }
     response = requests.post(f"https://api.github.com/repos/{REPO}/issues", headers=headers, json=data)
     return ("OK", 200) if response.ok else ("Failed", 500)
+
+@app.route('/get_db')
+def get_db():
+    download_db()
+    data = get_data()
+    return jsonify(data)
 
 '''
 from flask import Flask,request,jsonify, render_template
