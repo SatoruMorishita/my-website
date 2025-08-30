@@ -115,6 +115,6 @@ function loadPlanData() {
 //}
 
 function triggerDeploy() {
-  fetch("/trigger", { method: "POST" })
+  fetch("https://my-website-xpnf.onrender.com/trigger", { method: "POST" })
     .then(res => res.ok ? alert("デプロイ開始！") : alert("失敗！"));
 }
