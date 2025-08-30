@@ -38,6 +38,9 @@ def get_plan_data():
     download_db()
     data = get_data()
     return render_template('プラン済み.html', shipments=data)
+def api_plan():
+    data = get_data()  # 出荷予定などのデータ取得関数
+    return jsonify(data)
 
 @app.route('/')
 def index():
