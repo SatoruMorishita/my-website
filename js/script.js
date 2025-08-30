@@ -30,8 +30,8 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
     }
   });
 
-  function sayHello() {
-    alert("こんにちは！JavaScriptが動いています！");
+  function hello() {
+    alert("作成中、もうしばらくお待ちください。");
   }
 
   function logout() {
