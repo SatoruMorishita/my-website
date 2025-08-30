@@ -34,5 +34,7 @@ if __name__ == '__main__':
 #追加
 @app.route('/api/plan')
 def get_plan_data():
-    return render_template('プラン済み.html')
+    download_db()
+    data = get_data()
+    return render_template('プラン済み.html', shipments=data)
 
