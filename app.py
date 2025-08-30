@@ -32,19 +32,8 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 #追加
-@app.route('/planned')
-def shipments():
-    download_db()
-    data = get_data()
-    return render_template('プラン済み.html', shipments=data)
-
-@app.route('/about')
-def about():
-    download_db()
-    data = get_data()
-    return render_template('about.html', shipments=data)
-
 @app.route('/api/plan')
 def get_plan_data():
     return render_template('プラン済み.html')
+
 
