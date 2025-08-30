@@ -180,6 +180,10 @@ body.about-page{
   margin-top: 0px;
   justify-items: center; 
 }
+.container a {
+  display: block;
+}
+
 .circle {
   width: 180px;
   height: 180px;
