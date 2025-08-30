@@ -29,10 +29,12 @@ def get_data():
    # return jsonify(data)
 
 @app.route('/api/plan')
+//def api_plan():
+    //download_db()
+    //data = get_data()
+    //return render_template('planned.html', shipments=data)
 def api_plan():
-    download_db()
-    data = get_data()
-    return render_template('planned.html', shipments=data)
+    return "OK"
 
 @app.route('/')
 def index():
