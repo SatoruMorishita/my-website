@@ -119,11 +119,17 @@ function triggerDeploy() {
     .then(res => res.ok ? alert("デプロイ開始！") : alert("失敗！"));
 }
 
-function loadPlanData() {
-  fetch("/get_db")
-    .then(res => res.json())
-    .then(data => {
-      // ここで data を使って HTML に表示する処理を書く
-      console.log(data);
-    });
-}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.circle').addEventListener('click', () => {
+    fetch("/get_db")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data); // データ確認用
+        alert("データ取得成功！");
+      })
+      .catch(err => {
+        console.error("Fetch失敗:", err);
+        alert("取得失敗！");
+      });
+  });
+});
