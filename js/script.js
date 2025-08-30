@@ -121,6 +121,7 @@ function triggerDeploy() {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.circle').addEventListener('click', () => {
+    event.preventDefault(); // ページ遷移を防ぐ
     fetch("/get_db")
       .then(res => res.json())
       .then(data => {
