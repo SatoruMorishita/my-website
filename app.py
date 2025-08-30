@@ -29,7 +29,7 @@ def get_data():
    # return jsonify(data)
 
 if __name__ == '__main__':
-    app.run()
+    start: gunicorn app:app
 
 #追加
 @app.route('/planned')
