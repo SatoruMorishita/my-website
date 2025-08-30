@@ -1,5 +1,4 @@
-from flask import Flask, jsonify, render_template
-
+from flask import Flask,request,jsonify, render_template
 import sqlite3
 import requests
 import os
@@ -44,3 +43,23 @@ def index():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, host='0.0.0.0', port=port)
+
+
+app = Flask(__name__)
+
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")  # GitHubのPATを環境変数で管理
+REPO = "SatoruMorishita/my-website"
+
+@app.route('/trigger', methods=['POST'])
+def trigger():
+    headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    data = {
+        "title": "Render Deploy Trigger",
+        "body": "Triggered from about.html"
+    }
+    response = requests.post(f"https://api.github.com/repos/{REPO}/issues", headers=headers, json=data)
+    return ("OK", 200) if response.ok else ("Failed", 500)
+
