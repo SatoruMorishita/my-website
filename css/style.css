@@ -93,7 +93,7 @@ body.about-page{
 .menu-list {
   list-style: none;
   display: flex;
-  gap: 0; /* 区切り線を使うのでgapはゼロに */
+  gap: 10px; /* ← ここを広げて検索ボックスに余白を */
   margin: 0;
   padding: 0;
 }
