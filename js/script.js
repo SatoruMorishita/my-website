@@ -100,19 +100,29 @@ fetch("https://your-app.onrender.com/users")
 .then(data => { /* 表形式に変換して描画 */ });
 
 //追加分
-function openModal(title, dataHtml) {
-  document.getElementById("modalTitle").innerText = title;
-  document.getElementById("modalData").innerHTML = dataHtml;
-  document.getElementById("dataModal").style.display = "block";
-}
+//function openModal(title, dataHtml) {
+//  document.getElementById("modalTitle").innerText = title;
+//  document.getElementById("modalData").innerHTML = dataHtml;
+//  document.getElementById("dataModal").style.display = "block";
+//}
 
-function closeModal() {
-  document.getElementById("dataModal").style.display = "none";
-}
+//function closeModal() {
+//  document.getElementById("dataModal").style.display = "none";
+//}
 
 function openModal(title) {
   document.getElementById("modalTitle").innerText = title;
   document.getElementById("dataModal").style.display = "block";
 }
 
+function openModal(title, content) {
+  const modal = document.getElementById("modal");
+  const body = document.getElementById("modal-body");
+  body.innerHTML = `<h2>${title}</h2>${content}`;
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
 
