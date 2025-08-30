@@ -114,3 +114,7 @@ function loadPlanData() {
 //  document.getElementById("dataModal").style.display = "none";
 //}
 
+function triggerDeploy() {
+  fetch("/trigger", { method: "POST" })
+    .then(res => res.ok ? alert("デプロイ開始！") : alert("失敗！"));
+}
