@@ -110,13 +110,12 @@ fetch("https://your-app.onrender.com/users")
 //  document.getElementById("dataModal").style.display = "none";
 //}
 function openModal(title, content) {
-  document.getElementById("modalTitle").innerText = title;
-  document.getElementById("dataModal").style.display = "block";
   const modal = document.getElementById("modal");
   const body = document.getElementById("modal-body");
   body.innerHTML = `<h2>${title}</h2>${content}`;
   modal.style.display = "block";
 }
+
 
 function closeModal() {
   document.getElementById("modal").style.display = "none";
