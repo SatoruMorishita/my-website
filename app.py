@@ -32,6 +32,7 @@ def get_data():
 def api_plan():
     download_db()
     data = get_data()
+    print(data)
     return render_template('planned.html', shipments=data)
 
 @app.route('/')
