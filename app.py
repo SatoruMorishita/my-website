@@ -36,4 +36,3 @@ if __name__ == '__main__':
 def get_plan_data():
     return render_template('プラン済み.html')
 
-
