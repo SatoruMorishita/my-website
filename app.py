@@ -38,14 +38,13 @@ def shipments():
     data = get_data()
     return render_template('プラン済み.html', shipments=data)
 
-@app.route('/')
-def index():
-    download_db()
-    data = get_data()
-    return render_template('プラン済み.html', shipments=data)
-
 @app.route('/about')
 def about():
     download_db()
     data = get_data()
     return render_template('about.html', shipments=data)
+
+@app.route('/api/plan')
+def get_plan_data():
+    return render_template('プラン済み.html')
+
