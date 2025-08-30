@@ -1,3 +1,25 @@
+import requests
+from flask import Flask, request
+import os
+
+app = Flask(__name__)
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+REPO = "SatoruMorishita/my-website"
+
+@app.route('/trigger', methods=['POST'])
+def trigger():
+    headers = {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    data = {
+        "title": "Render Deploy Trigger",
+        "body": "Triggered from about.html"
+    }
+    response = requests.post(f"https://api.github.com/repos/{REPO}/issues", headers=headers, json=data)
+    return ("OK", 200) if response.ok else ("Failed", 500)
+
+'''
 from flask import Flask,request,jsonify, render_template
 import sqlite3
 import requests
@@ -58,6 +80,7 @@ def trigger():
     }
     data = {
         "title": "Render Deploy Trigger",
+'''
         "body": "Triggered from about.html"
     }
     response = requests.post(f"https://api.github.com/repos/{REPO}/issues", headers=headers, json=data)
