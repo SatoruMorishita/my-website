@@ -36,13 +36,13 @@ if __name__ == '__main__':
 def shipments():
     download_db()
     data = get_data()
-    return render_template('出荷済み.html', shipments=data)
+    return render_template('プラン済み.html', shipments=data)
 
 @app.route('/')
 def index():
     download_db()
     data = get_data()
-    return render_template('出荷済み.html', shipments=data)
+    return render_template('プラン済み.html', shipments=data)
 
 @app.route('/about')
 def about():
