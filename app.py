@@ -32,7 +32,7 @@ if __name__ == '__main__':
     app.run()
 
 #追加
-@app.route('/プラン済み')
+@app.route('/planned')
 def shipments():
     download_db()
     data = get_data()
