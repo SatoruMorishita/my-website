@@ -180,10 +180,6 @@ body.about-page{
   margin-top: 0px;
   justify-items: center; 
 }
-.container a {
-  display: block;
-}
-
 .circle {
   width: 180px;
   height: 180px;
@@ -196,7 +192,7 @@ body.about-page{
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .side-menu a:hover{
