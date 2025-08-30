@@ -1,0 +1,14 @@
+name: Deploy to Render
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Render Deploy Hook
+        run: |
+          curl -X POST https://api.render.com/v1/services/<YOUR_SERVICE_ID>/deploy \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
