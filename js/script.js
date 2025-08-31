@@ -103,8 +103,8 @@ function loadPlanData() {
   fetch('https://my-website-xpnf.onrender.com/api/plan')
     .then(res => res.text())
     .then(html => {
-      openModal('プラン済み', html);
       console.log("取得したHTML:", html); // ← ここ追加
+      openModal('プラン済み', html);
     });
 }
 
