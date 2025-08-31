@@ -70,9 +70,9 @@ def download_xlsx_unplanned():
     download_db(config["filename"], config["url"])
     data = fetch_data(config["filename"], config["table"])
 #当日出荷表
-@app.route('/download_today_xlsx')
+@app.route('/download_today-shippments_xlsx')
 def download_today_xlsx():
-    config = DB_CONFIG["planned"]
+    config = DB_CONFIG["today-shippments"]
     download_db(config["filename"], config["url"])
     conn = sqlite3.connect(config["filename"])
     cursor = conn.cursor()
@@ -93,7 +93,7 @@ def download_today_xlsx():
                      as_attachment=True,
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 #翌日出荷表
-@app.route('/download_tommorrow_xlsx')
+@app.route('/download_tommorrow-shippments_xlsx')
 def download_tommorrow_xlsx():
     config = DB_CONFIG["planned"]
     download_db(config["filename"], config["url"])
