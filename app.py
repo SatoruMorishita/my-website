@@ -4,7 +4,7 @@ import sqlite3
 from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
-
+CORS(app)
 # GitHub連携
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 REPO = "SatoruMorishita/my-website"
