@@ -108,11 +108,11 @@ function loadPlanData() {
 }
 
 //追加分
-//function openModal(title, dataHtml) {
-//  document.getElementById("modalTitle").innerText = title;
-//  document.getElementById("modalData").innerHTML = dataHtml;
-//  document.getElementById("dataModal").style.display = "block";
-//}
+function openModal(title, dataHtml) {
+  document.getElementById("modalTitle").innerText = title;
+  document.getElementById("modalData").innerHTML = dataHtml;
+  document.getElementById("dataModal").style.display = "block";
+}
 
 //function closeModal() {
 //  document.getElementById("dataModal").style.display = "none";
