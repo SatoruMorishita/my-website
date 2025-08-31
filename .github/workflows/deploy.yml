@@ -2,7 +2,7 @@ name: Scheduled Render Deploy
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # UTCで15分おき（JSTなら+9時間）
+    - cron: '*/10 * * * *'  # UTCで10分おき（JSTなら+9時間）
 
 jobs:
   deploy:
