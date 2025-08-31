@@ -126,8 +126,15 @@ function triggerDeploy() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('planButton').addEventListener('click', function(event) {
-    event.preventDefault(); // ページ遷移防止
-    loadPlanData();         // API呼び出し
-  });
+  const btn = document.getElementById('planButton');
+  console.log("planButton:", btn); // ← これが出るか確認
+
+  if (btn) {
+    btn.addEventListener('click', function(event) {
+      event.preventDefault();
+      loadPlanData();
+    });
+  } else {
+    console.warn("planButton が見つかりません");
+  }
 });
