@@ -28,6 +28,13 @@ def get_data():
     conn.close()
     return rows
 
+def get_data_from():
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM orders")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
 # Excelダウンロード用エンドポイント
 @app.route('/download_xlsx')
 def download_xlsx():
