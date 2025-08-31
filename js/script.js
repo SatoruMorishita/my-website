@@ -22,6 +22,10 @@
       login();
     }
   });
+//クローズボタン追加
+ document.getElementById('index-close-btn').addEventListener('click', function() {
+    window.location.href = 'https://satorumorishita.github.io/my-website/';
+  });
 
 //about.html
 document.getElementById("searchInput").addEventListener("keydown", function(event) {
