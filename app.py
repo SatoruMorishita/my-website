@@ -101,6 +101,30 @@ def unplanned():
     data = fetch_data(config["filename"], config["table"])
     return render_template(config["template"], shipments=data)
 
+#ルート:当日出荷表
+@app.route('/today-shipping')
+def today_shipping():
+    config = DB_CONFIG["planned"]
+    download_db(config["filename"], config["url"])
+    conn = sqlite3.connect(config["filename"])
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT * FROM {config['table']} WHERE 出荷日 = '2025/8/1'")
+    rows = cursor.fetchall()
+    conn.close()
+    return render_template("today-shipping.html", shipments=rows)
+
+#ルート:翌日出荷表
+@app.route('/tommorrow-shipping')
+def tommorrow_shipping():
+    config = DB_CONFIG["planned"]
+    download_db(config["filename"], config["url"])
+    conn = sqlite3.connect(config["filename"])
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT * FROM {config['table']} WHERE 出荷日 = '2025/8/1'")
+    rows = cursor.fetchall()
+    conn.close()
+    return render_template("today-shipping.html", shipments=rows)
+    
 # ローカル実行
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
