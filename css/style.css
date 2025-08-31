@@ -68,9 +68,9 @@
     }
 
    #index-close-btn {
-  position: fixed;
-   top: 0;
-  right: 0;
+ position: fixed;
+  top: 10px;
+  right: 15px;
   font-size: 28px;
   font-weight: bold;
   color: #333;
@@ -86,7 +86,6 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   transition: 0.3s;
 }
-
 
 /*about.html*/
 a{
