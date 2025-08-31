@@ -69,14 +69,22 @@
 
    #index-close-btn {
   position: fixed;
-  top: 0;
+   top: 0;
   right: 0;
-  padding: 10px 15px;
-  font-size: 24px;
-  background-color: transparent;
-  border: none;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 36px;
   cursor: pointer;
-  z-index: 9999; /* 他の要素の上に表示 */
+  z-index: 9999;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: 0.3s;
 }
 
 
