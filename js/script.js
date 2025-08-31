@@ -100,14 +100,19 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
   });
 //追加8/30
 function loadPlanData() {
-  console.log("loadPlanData() が呼ばれました"); // ← ここ追加
+  console.log("loadPlanData() が呼ばれました");
   fetch('https://my-website-xpnf.onrender.com/api/plan')
-    .then(res => res.text())
+    .then(res => res.text()) // ← HTMLならこのままでOK
     .then(html => {
-      console.log("取得したHTML:", html); // ← ここ追加
+      console.log("取得したHTML:", html);
       openModal('プラン済み', html);
+    })
+    .catch(err => {
+      console.error("取得失敗:", err);
+      alert("データ取得に失敗しました");
     });
 }
+
 
 //追加分
 function openModal(title, dataHtml) {
