@@ -1,10 +1,14 @@
 import os
 import requests
 import sqlite3
-from flask import Flask, jsonify, request, render_template
+import io
+import pandas as pd
+from flask import Flask, jsonify, request, render_template, send_file
+from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+
 # GitHub連携
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 REPO = "SatoruMorishita/my-website"
@@ -27,6 +31,24 @@ def get_data():
     rows = cursor.fetchall()
     conn.close()
     return rows
+
+# Excelダウンロード用エンドポイント
+@app.route('/download_xlsx')
+def download_xlsx():
+    download_db()
+    data = get_data()
+    df = pd.DataFrame(data, columns=[
+        "ID", "キャリア名", "出荷日", "名前", "宛先", "カートン数", "重量",
+        "トラッキングナンバー", "商品名", "商品カテゴリー", "着日"
+    ])
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Planned')
+    output.seek(0)
+    return send_file(output,
+                     download_name="planned_shipments.xlsx",
+                     as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
 # ルート定義
 @app.route('/')
