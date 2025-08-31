@@ -53,6 +53,11 @@ def index():
     data = get_data()
     return render_template('planned.html', shipments=data)
 
+@app.route('/unplanned')
+def unplanned():
+    data = get_data_from("未プラン.db")
+    return render_template('unplanned.html', shipments=data)
+    
 # ローカル実行用
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
