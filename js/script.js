@@ -124,11 +124,8 @@ function triggerDeploy() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('planButton').addEventListener('click', function(event) {
     event.preventDefault(); // ページ遷移防止
     loadPlanData();         // API呼び出し
   });
-});
-
 });
