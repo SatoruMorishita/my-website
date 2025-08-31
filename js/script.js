@@ -100,7 +100,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
   });
 //追加8/30
 function loadPlanData() {
-  fetch('https://my-website-xqnf.onrender.com/api/plan')
+  fetch('https://my-website-xpnf.onrender.com/api/plan')
     .then(res => res.text())
     .then(html => {
       openModal('プラン済み', html);
