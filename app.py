@@ -69,7 +69,53 @@ def download_xlsx_unplanned():
     config = DB_CONFIG["unplanned"]
     download_db(config["filename"], config["url"])
     data = fetch_data(config["filename"], config["table"])
-    
+#当日出荷表
+@app.route('/download_today_xlsx')
+def download_today_xlsx():
+    config = DB_CONFIG["planned"]
+    download_db(config["filename"], config["url"])
+    conn = sqlite3.connect(config["filename"])
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT * FROM {config['table']} WHERE 出荷日 = '2025-08-01'")
+    rows = cursor.fetchall()
+    conn.close()
+
+    df = pd.DataFrame(rows, columns=[
+        "ID", "キャリア名", "出荷日", "名前", "宛先", "カートン数", "重量",
+        "トラッキングナンバー", "商品名", "商品カテゴリー", "着日"
+    ])
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Today')
+    output.seek(0)
+    return send_file(output,
+                     download_name="today_shipments.xlsx",
+                     as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+#翌日出荷表
+@app.route('/download_tommorrow_xlsx')
+def download_tommorrow_xlsx():
+    config = DB_CONFIG["planned"]
+    download_db(config["filename"], config["url"])
+    conn = sqlite3.connect(config["filename"])
+    cursor = conn.cursor()
+    cursor.execute(f"SELECT * FROM {config['table']} WHERE 出荷日 = '2025-08-02'")
+    rows = cursor.fetchall()
+    conn.close()
+
+    df = pd.DataFrame(rows, columns=[
+        "ID", "キャリア名", "出荷日", "名前", "宛先", "カートン数", "重量",
+        "トラッキングナンバー", "商品名", "商品カテゴリー", "着日"
+    ])
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Tommorrow')
+    output.seek(0)
+    return send_file(output,
+                     download_name="tommorrow_shipments.xlsx",
+                     as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
     # 必要に応じてカラム名を調整
     df = pd.DataFrame(data, columns=[
         "ID", "キャリア名", "出荷日", "名前", "宛先", "カートン数", "重量", "商品名","商品カテゴリー","着日","電話番号"
