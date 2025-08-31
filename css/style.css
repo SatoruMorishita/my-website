@@ -67,15 +67,18 @@
      z-index: 9999;
     }
 
-    .index-close-btn {
+   #index-close-btn {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 0;
+  right: 0;
+  padding: 10px 15px;
   font-size: 24px;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  z-index: 9999; /* 他の要素の上に表示 */
 }
+
 
 /*about.html*/
 a{
