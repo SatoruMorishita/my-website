@@ -124,17 +124,11 @@ function triggerDeploy() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.circle').addEventListener('click', () => {
-    event.preventDefault(); // ページ遷移を防ぐ
-    fetch("/get_db")
-      .then(res => res.json())
-      .then(data => {
-        console.log(data); // データ確認用
-        alert("データ取得成功！");
-      })
-      .catch(err => {
-        console.error("Fetch失敗:", err);
-        alert("取得失敗！");
-      });
+  document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('planButton').addEventListener('click', function(event) {
+    event.preventDefault(); // ページ遷移防止
+    loadPlanData();         // API呼び出し
   });
+});
+
 });
