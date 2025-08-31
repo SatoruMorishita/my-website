@@ -36,6 +36,7 @@ def index():
     return render_template('planned.html', shipments=data)
 
 @app.route('/api/plan')
+@app.route('/api/plan/')
 def api_plan():
     download_db()
     data = get_data()
