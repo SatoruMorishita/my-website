@@ -1,5 +1,7 @@
 Flask
+flask_cors
 requests
 gunicorn
 pandas
 xlsxwriter
+
