@@ -100,6 +100,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
   });
 //追加8/30
 function loadPlanData() {
+  console.log("loadPlanData() が呼ばれました"); // ← ここ追加
   fetch('https://my-website-xpnf.onrender.com/api/plan')
     .then(res => res.text())
     .then(html => {
