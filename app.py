@@ -72,9 +72,9 @@ def download_xlsx_unplanned():
     
     # 必要に応じてカラム名を調整
     df = pd.DataFrame(data, columns=[
-        "キャリア", "出荷日", "名前", "発地", "カートン数", "重量", "商品カテゴリ", "住所"
+        "ID", "キャリア名", "出荷日", "名前", "宛先", "カートン数", "重量", "商品名","商品カテゴリー","着日","電話番号"
     ])
-    
+
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         df.to_excel(writer, index=False, sheet_name='Unplanned')
