@@ -8,11 +8,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-'''
-# GitHub連携
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
-REPO = "SatoruMorishita/my-website"
-'''
+
 # DB設定
 DB_PATH = "data.db"
 GITHUB_DB_URL = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/プラン済み.db"
@@ -56,31 +52,7 @@ def index():
     download_db()
     data = get_data()
     return render_template('planned.html', shipments=data)
-'''
-@app.route('/api/plan')
-@app.route('/api/plan/')
-def api_plan():
-    download_db()
-    data = get_data()
-    return render_template('planned.html', shipments=data)
-@app.route('/get_db')
-def get_db():
-    download_db()
-    data = get_data()
-    return jsonify(data)
-@app.route('/trigger', methods=['POST'])
-def trigger():
-    headers = {
-        "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-    data = {
-        "title": "Render Deploy Trigger",
-        "body": "Triggered from about.html"
-    }
-    response = requests.post(f"https://api.github.com/repos/{REPO}/issues", headers=headers, json=data)
-    return ("OK", 200) if response.ok else ("Failed", 500)
-'''
+
 # ローカル実行用
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
