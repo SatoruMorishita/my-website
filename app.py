@@ -145,21 +145,6 @@ def download_tommorrow_xlsx():
                      as_attachment=True,
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
-    # 必要に応じてカラム名を調整
-    df = pd.DataFrame(data, columns=[
-        "ID", "キャリア名", "出荷日", "名前", "宛先", "カートン数", "重量", "商品名","商品カテゴリー","着日","電話番号"
-    ])
-
-    output = io.BytesIO()
-    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-        df.to_excel(writer, index=False, sheet_name='Unplanned')
-    output.seek(0)
-    return send_file(output,
-                     download_name=config["xlsx_name"],
-                     as_attachment=True,
-                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-
-
 # ルート：プラン済み
 @app.route('/')
 def index():
