@@ -63,8 +63,8 @@ def download_xlsx():
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
 
-
-  @app.route('/download_xlsx_unplanned')
+#未プラン
+@app.route('/download_xlsx_unplanned')
 def download_xlsx_unplanned():
     config = DB_CONFIG["unplanned"]
     download_db(config["filename"], config["url"])
