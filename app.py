@@ -120,7 +120,7 @@ def tommorrow_shipping():
     download_db(config["filename"], config["url"])
     conn = sqlite3.connect(config["filename"])
     cursor = conn.cursor()
-    cursor.execute(f"SELECT * FROM {config['table']} WHERE 出荷日 = '2025/8/1'")
+    cursor.execute(f"SELECT * FROM {config['table']} WHERE 出荷日 = '2025/8/2'")
     rows = cursor.fetchall()
     conn.close()
     return render_template("today-shipping.html", shipments=rows)
