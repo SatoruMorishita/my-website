@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="stylesheet" href="static/css/style.css">
+  <meta charset="UTF-8">
+  <title>当日出荷表</title>
+</head>
+<body>
+  <!-- planned.html の任意の場所に追加 -->
+<button id="api-close-btn" class="api-close-btn">×</button>
 
+  <!-- データ表示用のモーダル -->
+<div id="dataModal" class="modal">
+  <div class="modal-content">
+    <div class="actions">
+      <a href="/download_xlsx">
+        <button class="download-btn">ダウンロード</button>
+      </a>
+    </div>
+    <div id="modalTitle"></div>
+    <div id="modalData">当日出荷表<br>↓↓↓<br></div>
+  </div>
+</div>
+
+  <div id="modalData">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>キャリア名</th>
+      <th>出荷日</th>
+      <th>名前</th>
+      <th>宛先</th>
+      <th>カートン数</th>
+      <th>重量</th>
+      <th>トラッキングナンバー</th>
+      <th>商品名</th>
+      <th>商品カテゴリー</th>
+      <th>着日</th>
+    </tr>
+    {% for row in shipments %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td>
+      <td>{{ row[2] }}</td>
+      <td>{{ row[3] }}</td>
+      <td>{{ row[4] }}</td>
+      <td>{{ row[5] }}</td>
+      <td>{{ row[6] }}</td>
+      <td>{{ row[7] }}</td>
+      <td>{{ row[8] }}</td>
+      <td>{{ row[9] }}</td>
+      <td>{{ row[10] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+
+<script src="static/js/script.js"></script>
+</body>
+</html>
