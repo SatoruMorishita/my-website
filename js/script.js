@@ -121,9 +121,9 @@ function openModal(title, dataHtml) {
   document.getElementById("dataModal").style.display = "block";
 }
 
-//function closeModal() {
-//  document.getElementById("dataModal").style.display = "none";
-//}
+function closeModal() {
+ document.getElementById("dataModal").style.display = "none";
+}
 
 function triggerDeploy() {
   fetch("https://my-website-xpnf.onrender.com/trigger", { method: "POST" })
