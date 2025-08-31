@@ -86,9 +86,8 @@ def trigger():
     }
     data = {
         "title": "Render Deploy Trigger",
-'''
         "body": "Triggered from about.html"
     }
     response = requests.post(f"https://api.github.com/repos/{REPO}/issues", headers=headers, json=data)
     return ("OK", 200) if response.ok else ("Failed", 500)
-
+'''
