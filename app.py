@@ -62,6 +62,29 @@ def download_xlsx():
                      as_attachment=True,
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
+
+
+  @app.route('/download_xlsx_unplanned')
+def download_xlsx_unplanned():
+    config = DB_CONFIG["unplanned"]
+    download_db(config["filename"], config["url"])
+    data = fetch_data(config["filename"], config["table"])
+    
+    # 必要に応じてカラム名を調整
+    df = pd.DataFrame(data, columns=[
+        "キャリア", "出荷日", "名前", "発地", "カートン数", "重量", "商品カテゴリ", "住所"
+    ])
+    
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Unplanned')
+    output.seek(0)
+    return send_file(output,
+                     download_name=config["xlsx_name"],
+                     as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
+
 # ルート：プラン済み
 @app.route('/')
 def index():
