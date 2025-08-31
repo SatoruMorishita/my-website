@@ -86,6 +86,12 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   transition: 0.3s;
 }
+#index-close-btn:hover {
+  background-color: #f0f0f0;
+  color: red;
+  border-color: red;
+}
+
 
 /*about.html*/
 a{
