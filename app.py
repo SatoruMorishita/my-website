@@ -24,6 +24,20 @@ DB_CONFIG = {
         "table": "orders",
         "template": "unplanned.html",
         "xlsx_name": "unplanned_orders.xlsx"
+    },
+    "today-shipping": {
+        "filename": "プラン済み.db",
+        "url": "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/プラン済み.db",
+        "table": "shipments",
+        "template": "today-shipping.html",
+        "xlsx_name": "today-shipping.xlsx"
+    },
+    "tommorrow-shipping": {
+        "filename": "プラン済み.db",
+        "url": "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/プラン済み.db",
+        "table": "shipments",
+        "template": "tommorrow-shipping.html",
+        "xlsx_name": "tommorrow-shipping.xlsx"
     }
 }
 
