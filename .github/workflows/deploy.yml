@@ -1,14 +1,12 @@
-name: Deploy to Render
+name: Scheduled Render Deploy
 
 on:
-  issues:
-    types: [opened]
+  schedule:
+    - cron: '*/15 * * * *'  # UTCで15分おき（JSTなら+9時間）
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Call Render Deploy Hook
-        run: |
-          curl -X POST https://api.render.com/v1/services/<YOUR_SERVICE_ID>/deploy \
-          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+      - name: Trigger Render Deploy Hook
+        run: curl -X POST https://render.com/deploy/YOUR_HOOK_ID
