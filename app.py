@@ -123,7 +123,7 @@ def tommorrow_shipping():
     cursor.execute(f"SELECT * FROM {config['table']} WHERE 出荷日 = '2025/8/2'")
     rows = cursor.fetchall()
     conn.close()
-    return render_template("today-shipping.html", shipments=rows)
+    return render_template("tommorrow-shipping.html", shipments=rows)
     
 # ローカル実行
 if __name__ == '__main__':
