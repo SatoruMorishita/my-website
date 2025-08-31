@@ -12,7 +12,7 @@ CORS(app)
 # GitHub連携
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 REPO = "SatoruMorishita/my-website"
-''''
+'''
 # DB設定
 DB_PATH = "data.db"
 GITHUB_DB_URL = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/プラン済み.db"
