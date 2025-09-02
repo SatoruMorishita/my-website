@@ -34,6 +34,15 @@ DB_CONFIG = {
     "xlsx_name": "inventory_summary.xlsx"
     },
 
+    "unplanned-item": {
+    "filename": "unplanned_item.db",
+    "url": "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/unplanned_item.db",
+    "table": "unplanned",  # ← ここが元のテーブル名
+    "template": "unplanned-item.html",
+    "xlsx_name": "unplanned_item.xlsx"
+    }
+
+    
     "today-shipping": {
         "filename": "プラン済み.db",
         "url": "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/プラン済み.db",
@@ -79,6 +88,14 @@ def fetch_inventory_summary(db_path, table_name):
     rows = cursor.fetchall()
     conn.close()
     return rows
+    
+#未プラン在庫
+@app.route('/unplanned-item')
+def unplanned_item():
+    config = DB_CONFIG["unplanned-item"]
+    download_db(config["filename"], config["url"])
+    data = fetch_data(config["filename"], config["table"])
+    return render_template(config["template"], shipments=data)
 
 # Excelダウンロードエンドポイント（planned固定）
 @app.route('/download_xlsx')
@@ -138,6 +155,25 @@ def download_inventory_xlsx():
                      as_attachment=True,
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
+#未プラン在庫
+@app.route('/download_unplanned_item_xlsx')
+def download_unplanned_item_xlsx():
+    config = DB_CONFIG["unplanned-item"]
+    download_db(config["filename"], config["url"])
+    data = fetch_data(config["filename"], config["table"])
+
+    df = pd.DataFrame(data, columns=[
+        "ID","出荷日", "名前","商品名", "商品カテゴリー","unit数","着日","電話番号"
+    ])
+
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Unplanned Item')
+    output.seek(0)
+    return send_file(output,
+                     download_name=config["xlsx_name"],
+                     as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
 
 #当日出荷表
