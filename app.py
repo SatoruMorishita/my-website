@@ -40,7 +40,7 @@ DB_CONFIG = {
     "table": "unplanned",  # ← ここが元のテーブル名
     "template": "unplanned-item.html",
     "xlsx_name": "unplanned_item.xlsx"
-    }
+    },
 
     
     "today-shipping": {
