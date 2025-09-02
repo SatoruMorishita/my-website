@@ -29,7 +29,7 @@ DB_CONFIG = {
     "inventory": {
     "filename": "inventory.db",
     "url": "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/inventory.db",
-    "table": "inventory_table",  # ← 実際のテーブル名に合わせてね
+    "table": "inventory",  # ← 実際のテーブル名に合わせてね
     "template": "inventory.html",
     "xlsx_name": "inventory_summary.xlsx"
     },
