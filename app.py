@@ -25,6 +25,15 @@ DB_CONFIG = {
         "template": "unplanned.html",
         "xlsx_name": "unplanned_orders.xlsx"
     },
+    
+    "inventory": {
+    "filename": "inventory.db",
+    "url": "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/inventory.db",
+    "table": "inventory_table",  # ← 実際のテーブル名に合わせてね
+    "template": "inventory.html",
+    "xlsx_name": "inventory_summary.xlsx"
+    },
+
     "today-shipping": {
         "filename": "プラン済み.db",
         "url": "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/プラン済み.db",
@@ -53,6 +62,20 @@ def fetch_data(db_path, table_name):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     cursor.execute(f"SELECT * FROM {table_name}")
+    rows = cursor.fetchall()
+    conn.close()
+    return rows
+
+#inventory
+def fetch_inventory_summary(db_path, table_name):
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    query = f"""
+        SELECT 商品名, 商品カテゴリー, SUM(unit数) as 合計unit数
+        FROM {table_name}
+        GROUP BY 商品名, 商品カテゴリー
+    """
+    cursor.execute(query)
     rows = cursor.fetchall()
     conn.close()
     return rows
@@ -97,6 +120,25 @@ def download_xlsx_unplanned():
                      download_name=config["xlsx_name"],
                      as_attachment=True,
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
+#在庫
+@app.route('/download_inventory_xlsx')
+def download_inventory_xlsx():
+    config = DB_CONFIG["inventory"]
+    download_db(config["filename"], config["url"])
+    summary = fetch_inventory_summary(config["filename"], config["table"])
+
+    df = pd.DataFrame(summary, columns=["商品名", "商品カテゴリー", "unit数合計"])
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Inventory Summary')
+    output.seek(0)
+    return send_file(output,
+                     download_name=config["xlsx_name"],
+                     as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
+
 
 #当日出荷表
 @app.route('/download_today-shipping_xlsx')
@@ -160,6 +202,14 @@ def unplanned():
     download_db(config["filename"], config["url"])
     data = fetch_data(config["filename"], config["table"])
     return render_template(config["template"], shipments=data)
+
+#ルート:在庫
+@app.route('/inventory')
+def inventory():
+    config = DB_CONFIG["inventory"]
+    download_db(config["filename"], config["url"])
+    summary = fetch_inventory_summary(config["filename"], config["table"])
+    return render_template(config["template"], shipments=summary)
 
 #ルート:当日出荷表
 @app.route('/today-shipping')
