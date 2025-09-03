@@ -247,6 +247,59 @@ def inventory():
     summary = fetch_inventory_summary(config["filename"], config["table"])
     return render_template(config["template"], shipments=summary)
 
+#short
+@app.route('/shortage')
+def shortage():
+    # DB設定
+    inventory_config = DB_CONFIG["inventory"]
+    unplanned_config = DB_CONFIG["unplanned-item"]
+
+    # DBダウンロード
+    download_db(inventory_config["filename"], inventory_config["url"])
+    download_db(unplanned_config["filename"], unplanned_config["url"])
+
+    # 在庫データ取得（商品名単位で合計）
+    conn_inv = sqlite3.connect(inventory_config["filename"])
+    cursor_inv = conn_inv.cursor()
+    cursor_inv.execute("""
+        SELECT 商品名, SUM(unit数) as 在庫unit数
+        FROM inventory
+        GROUP BY 商品名
+    """)
+    inventory_data = cursor_inv.fetchall()
+    conn_inv.close()
+
+    # 未プラン出荷データ取得（商品名単位で合計）
+    conn_unp = sqlite3.connect(unplanned_config["filename"])
+    cursor_unp = conn_unp.cursor()
+    cursor_unp.execute("""
+        SELECT 商品名, SUM(unit数) as 未プランunit数
+        FROM unplanned
+        GROUP BY 商品名
+    """)
+    unplanned_data = cursor_unp.fetchall()
+    conn_unp.close()
+
+    # データを辞書化
+    inventory_dict = {name: units for name, units in inventory_data}
+    unplanned_dict = {name: units for name, units in unplanned_data}
+
+    # 差分計算（在庫 - 未プラン）でマイナスのものを抽出
+    shortage_list = []
+    for name, unplanned_units in unplanned_dict.items():
+        inventory_units = inventory_dict.get(name, 0)
+        diff = inventory_units - unplanned_units
+        if diff < 0:
+            shortage_list.append({
+                "商品名": name,
+                "在庫unit数": inventory_units,
+                "未プランunit数": unplanned_units,
+                "差分": diff
+            })
+
+    return render_template("short.html", shipments=shortage_list)
+
+
 #ルート:当日出荷表
 @app.route('/today-shipping')
 def today_shipping():
