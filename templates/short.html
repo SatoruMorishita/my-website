@@ -21,23 +21,23 @@
     <div id="modalData">Short<br>↓↓↓<br></div>
   </div>
 </div>
-  <div id="modalData">
   <table>
-    <tr>
-      <th>商品名</th>
-      <th>在庫unit数</th>
-      <th>未プランunit数</th>
-      <th>差分</th>
-    </tr>
-    {% for row in shipments %}
-    <tr>
-      <td>{{ row[0] }}</td>
-      <td>{{ row[1] }}</td>
-      <td>{{ row[2] }}</td>
-      <td>{{ row[3] }}</td>
-    </tr>
-    {% endfor %}
-  </table>
+  <tr>
+    <th>商品名</th>
+    <th>在庫unit数</th>
+    <th>未プランunit数</th>
+    <th>差分</th>
+  </tr>
+  {% for row in shipments %}
+  <tr>
+    <td>{{ row["商品名"] }}</td>
+    <td>{{ row["在庫unit数"] }}</td>
+    <td>{{ row["未プランunit数"] }}</td>
+    <td>{{ row["差分"] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
 </div>
 
 
