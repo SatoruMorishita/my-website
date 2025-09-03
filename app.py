@@ -167,6 +167,67 @@ def download_unplanned_item_xlsx():
                      as_attachment=True,
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
+#short
+@app.route('/download_shortage_xlsx')
+def download_shortage_xlsx():
+    # DB設定
+    inventory_config = DB_CONFIG["inventory"]
+    unplanned_config = DB_CONFIG["unplanned-item"]
+
+    # DBダウンロード
+    download_db(inventory_config["filename"], inventory_config["url"])
+    download_db(unplanned_config["filename"], unplanned_config["url"])
+
+    # 在庫データ取得
+    conn_inv = sqlite3.connect(inventory_config["filename"])
+    cursor_inv = conn_inv.cursor()
+    cursor_inv.execute("""
+        SELECT 商品名, SUM(unit数) as 在庫unit数
+        FROM inventory
+        GROUP BY 商品名
+    """)
+    inventory_data = cursor_inv.fetchall()
+    conn_inv.close()
+
+    # 未プラン出荷データ取得
+    conn_unp = sqlite3.connect(unplanned_config["filename"])
+    cursor_unp = conn_unp.cursor()
+    cursor_unp.execute("""
+        SELECT 商品名, SUM(unit数) as 未プランunit数
+        FROM unplanned
+        GROUP BY 商品名
+    """)
+    unplanned_data = cursor_unp.fetchall()
+    conn_unp.close()
+
+    # 辞書化
+    inventory_dict = {name: units for name, units in inventory_data}
+    unplanned_dict = {name: units for name, units in unplanned_data}
+
+    # 差分計算
+    shortage_list = []
+    for name, unplanned_units in unplanned_dict.items():
+        inventory_units = inventory_dict.get(name, 0)
+        diff = inventory_units - unplanned_units
+        if diff < 0:
+            shortage_list.append({
+                "商品名": name,
+                "在庫unit数": inventory_units,
+                "未プランunit数": unplanned_units,
+                "差分": diff
+            })
+
+    # Excel出力
+    df = pd.DataFrame(shortage_list, columns=["商品名", "在庫unit数", "未プランunit数", "差分"])
+    output = io.BytesIO()
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        df.to_excel(writer, index=False, sheet_name='Shortage')
+    output.seek(0)
+
+    return send_file(output,
+                     download_name="shortage_summary.xlsx",
+                     as_attachment=True,
+                     mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
 #当日出荷表
 @app.route('/download_today-shipping_xlsx')
