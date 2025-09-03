@@ -284,7 +284,7 @@ def download_empty_slot_xlsx():
     conn = sqlite3.connect(config["filename"])
     cursor = conn.cursor()
     cursor.execute(f"""
-        SELECT ロケーション
+        SELECT Location
         FROM {config['table']}
         WHERE 商品名 IS NULL OR TRIM(商品名) = ''
     """)
