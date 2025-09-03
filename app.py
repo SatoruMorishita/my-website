@@ -417,7 +417,7 @@ def empty_slot():
     conn = sqlite3.connect(config["filename"])
     cursor = conn.cursor()
     cursor.execute(f"""
-        SELECT ロケーション AS 空きロケーション
+        SELECT Location AS 空きロケーション
         FROM {config['table']}
         WHERE 商品名 IS NULL OR TRIM(商品名) = ''
     """)
