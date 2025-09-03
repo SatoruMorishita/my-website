@@ -88,14 +88,6 @@ def fetch_inventory_summary(db_path, table_name):
     rows = cursor.fetchall()
     conn.close()
     return rows
-    
-#未プラン在庫
-@app.route('/unplanned-item')
-def unplanned_item():
-    config = DB_CONFIG["unplanned-item"]
-    download_db(config["filename"], config["url"])
-    data = fetch_data(config["filename"], config["table"])
-    return render_template(config["template"], shipments=data)
 
 # Excelダウンロードエンドポイント（planned固定）
 @app.route('/download_xlsx')
@@ -246,6 +238,14 @@ def inventory():
     download_db(config["filename"], config["url"])
     summary = fetch_inventory_summary(config["filename"], config["table"])
     return render_template(config["template"], shipments=summary)
+
+#未プラン在庫
+@app.route('/unplanned-item')
+def unplanned_item():
+    config = DB_CONFIG["unplanned-item"]
+    download_db(config["filename"], config["url"])
+    data = fetch_data(config["filename"], config["table"])
+    return render_template(config["template"], shipments=data)
 
 #short
 @app.route('/shortage')
