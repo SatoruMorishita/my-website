@@ -359,8 +359,7 @@ def shortage():
             })
 
     return render_template("short.html", shipments=shortage_list)
-
-
+    
 #ルート:当日出荷表
 @app.route('/today-shipping')
 def today_shipping():
