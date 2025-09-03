@@ -13,7 +13,7 @@
 <div id="dataModal" class="modal">
   <div class="modal-content">
     <div class="actions">
-      <a href="/download_inventory_xlsx">
+      <a href="/download_empty-slot_xlsx">
         <button class="download-btn">ダウンロード</button>
       </a>
     </div>
@@ -24,19 +24,15 @@
 
   <div id="modalData">
   <table>
-    <tr>
-      <th>商品名</th>
-      <th>商品カテゴリー</th>
-      <th>unit数合計</th>
-    </tr>
-    {% for row in shipments %}
-    <tr>
-      <td>{{ row[0] }}</td>
-      <td>{{ row[1] }}</td>
-      <td>{{ row[2] }}</td>
-    </tr>
-    {% endfor %}
-  </table>
+  <tr>
+    <th>空きロケーション</th>
+  </tr>
+  {% for row in shipments %}
+  <tr>
+    <td>{{ row["空きロケーション"] }}</td>
+  </tr>
+  {% endfor %}
+</table>
 </div>
 
 
