@@ -423,7 +423,7 @@ def empty_location():
     """)
     rows = cursor.fetchall()
     conn.close()
-    return render_template("empty-slot.html", shipments=rows)
+    return render_template("empty_slot.html", shipments=rows)
 
 
 # ローカル実行
