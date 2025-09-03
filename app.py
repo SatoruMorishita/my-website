@@ -278,26 +278,26 @@ def download_tommorrow_xlsx():
 
 #空きロケーション
 @app.route('/download_empty-slot_xlsx')
-def download_empty_location_xlsx():
+def download_empty_slot_xlsx():
     config = DB_CONFIG["inventory"]
     download_db(config["filename"], config["url"])
     conn = sqlite3.connect(config["filename"])
     cursor = conn.cursor()
     cursor.execute(f"""
-        SELECT ロケーション, 商品名
+        SELECT ロケーション
         FROM {config['table']}
-        WHERE 商品名 IS NULL OR 商品名 = ''
+        WHERE 商品名 IS NULL OR TRIM(商品名) = ''
     """)
     rows = cursor.fetchall()
     conn.close()
 
-    df = pd.DataFrame(rows, columns=["ロケーション", "商品名", "unit数"])
+    df = pd.DataFrame(rows, columns=["空きロケーション"])
     output = io.BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-        df.to_excel(writer, index=False, sheet_name='Empty Location')
+        df.to_excel(writer, index=False, sheet_name='EmptySlot')
     output.seek(0)
     return send_file(output,
-                     download_name="empty_location.xlsx",
+                     download_name="empty_slot.xlsx",
                      as_attachment=True,
                      mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
@@ -411,20 +411,19 @@ def tommorrow_shipping():
 
 #空きロケーション
 @app.route('/empty-slot')
-def empty_location():
+def empty_slot():
     config = DB_CONFIG["inventory"]
     download_db(config["filename"], config["url"])
     conn = sqlite3.connect(config["filename"])
     cursor = conn.cursor()
     cursor.execute(f"""
-        SELECT ロケーション, 商品名
+        SELECT ロケーション AS 空きロケーション
         FROM {config['table']}
-        WHERE 商品名 IS NULL OR 商品名 = ''
+        WHERE 商品名 IS NULL OR TRIM(商品名) = ''
     """)
     rows = cursor.fetchall()
     conn.close()
-    return render_template("empty_slot.html", shipments=rows)
-
+    return render_template("empty_slot.html", shipments=[{"空きロケーション": r[0]} for r in rows])
 
 # ローカル実行
 if __name__ == '__main__':
