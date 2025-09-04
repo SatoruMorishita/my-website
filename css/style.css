@@ -27,13 +27,10 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
       text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 300px;
     }
 
     .login-box h2 {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .login-box input {
@@ -192,7 +189,7 @@ body.about-page{
 
 .content-area {
   flex: 1;
-  padding: 25px;
+  padding: 40px;
 }
 
 .header-box {
@@ -212,7 +209,7 @@ body.about-page{
   height: 180px;
   background-color: blue;
   border-radius: 50%;
-  font-size: 18px;
+  font-size: 20px;
   color: black;
   font-weight: bold;
   display: flex;
@@ -266,7 +263,3 @@ body.about-page{
   color: red;
   border-color: red;
 }
-
-
-
-
