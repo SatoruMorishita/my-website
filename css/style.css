@@ -36,7 +36,7 @@
     .login-box input {
       width: 100%;
       padding: 10px;
-      margin: 5px 0;
+      margin: 10px 0;
       font-size: 16px;
     }
 
@@ -209,7 +209,7 @@ body.about-page{
   height: 180px;
   background-color: blue;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 18px;
   color: black;
   font-weight: bold;
   display: flex;
