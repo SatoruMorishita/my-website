@@ -205,11 +205,11 @@ body.about-page{
   margin-top: 0px;
 }
 .circle {
-  width: 180px;
-  height: 180px;
+  width: 140px;
+  height: 140px;
   background-color: blue;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 16px;
   color: black;
   font-weight: bold;
   display: flex;
