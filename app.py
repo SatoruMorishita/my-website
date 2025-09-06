@@ -467,7 +467,7 @@ def orders():
     conn.close()
 
     # 集計してランキング化（unit数の昇順）
-　　summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
+    summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
     # トップ10だけ抽出（unit数が多い順に並べる）
     top10 = summary.tail(10)
     # グラフ生成
