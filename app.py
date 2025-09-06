@@ -451,6 +451,43 @@ def order_summary():
     table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
     return render_template("orders.html", table_html=table_html)
 
+#注文商品ランキング
+@app.route('/orders')
+def orders():
+    db_path = "注文.db"
+    github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
+    table_name = "orders"
+
+    # DBダウンロード
+    download_db(db_path, github_url)
+
+    # データ取得
+    conn = sqlite3.connect(db_path)
+    df = pd.read_sql_query(f"SELECT 商品名, unit数 FROM {table_name}", conn)
+    conn.close()
+
+    # 集計してランキング化（unit数の昇順）
+　　summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
+
+　　# トップ10だけ抽出（unit数が多い順に並べる）
+　　top10 = summary.tail(10)
+
+    # グラフ生成
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.barh(summary.index, summary.values, color="#4a90e2")
+    ax.set_xlabel("Unit数")
+    ax.set_title("商品別売上ランキング")
+    plt.tight_layout()
+
+    # Base64に変換
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    buf.seek(0)
+    encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
+    graph_url = f"data:image/png;base64,{encoded}"
+
+    return render_template("orders.html", graph_url=graph_url)
+
 
 # ローカル実行
 if __name__ == '__main__':
