@@ -470,6 +470,9 @@ def orders():
     summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
     # トップ10だけ抽出（unit数が多い順に並べる）
     top10 = summary.tail(10)
+    
+    # デバッグ出力を追加
+    print("Top10:", top10)
     # グラフ生成
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.barh(top10.index, top10.values, color="#4a90e2")
@@ -483,6 +486,10 @@ def orders():
     fig.savefig(buf, format="png")
     buf.seek(0)
     encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
+
+    # さらにエンコード結果も確認
+    print("Encoded:", encoded[:100])  # 先頭100文字だけでOK
+    
     graph_url = f"data:image/png;base64,{encoded}"
 
     return render_template("orders.html", graph_url=graph_url)
