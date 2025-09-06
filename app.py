@@ -426,77 +426,56 @@ rows = cursor.fetchall()
 conn.close()
 return render_template("empty_slot.html", shipments=[{"空きロケーション": r[0]} for r in rows])
 
-#注文
+# 注文集計表
 @app.route('/order_summary')
 def order_summary():
-# DB設定（注文.dbを使う前提）
-db_path = "注文.db"
-github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
-table_name = "orders"  # ← 実際のテーブル名に合わせてね
+    db_path = "注文.db"
+    github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
+    table_name = "orders"
 
-# DBダウンロード
-download_db(db_path, github_url)
+    download_db(db_path, github_url)
 
-# データ取得
-conn = sqlite3.connect(db_path)
-df = pd.read_sql_query(f"SELECT 商品カテゴリ, 注文時間 FROM {table_name}", conn)
-conn.close()
+    conn = sqlite3.connect(db_path)
+    df = pd.read_sql_query(f"SELECT 商品カテゴリ, 注文時間 FROM {table_name}", conn)
+    conn.close()
 
-# 日付だけ抽出（時間を除く）
-df["注文日"] = pd.to_datetime(df["注文時間"]).dt.date
+    df["注文日"] = pd.to_datetime(df["注文時間"]).dt.date
+    pivot = pd.pivot_table(df, index="商品カテゴリ", columns="注文日", aggfunc="size", fill_value=0)
+    table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
 
-# ピボットテーブルで集計
-pivot = pd.pivot_table(df, index="商品カテゴリ", columns="注文日", aggfunc="size", fill_value=0)
+    return render_template("orders.html", table_html=table_html)
 
-# HTML化してテンプレートに渡す
-table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
-return render_template("orders.html", table_html=table_html)
-
-#注文商品ランキング
+# 注文商品ランキング
 @app.route('/order_ranking')
 def orders():
-db_path = "注文.db"
-github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
-table_name = "orders"
+    db_path = "注文.db"
+    github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
+    table_name = "orders"
 
-# DBダウンロード
-download_db(db_path, github_url)
+    download_db(db_path, github_url)
 
-# データ取得
-conn = sqlite3.connect(db_path)
-df = pd.read_sql_query(f"SELECT 商品名, unit数 FROM {table_name}", conn)
-conn.close()
+    conn = sqlite3.connect(db_path)
+    df = pd.read_sql_query(f"SELECT 商品名, unit数 FROM {table_name}", conn)
+    conn.close()
 
-# 集計してランキング化（unit数の昇順）
-summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
-# トップ10だけ抽出（unit数が多い順に並べる）
-top10 = summary.tail(10)
+    summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
+    top10 = summary.tail(10)
 
-# デバッグ出力を追加
-print("Top10:", top10)
-# グラフ生成
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.barh(top10.index, top10.values, color="#4a90e2")
-ax.set_xlabel("Unit数")
-ax.set_title("商品別売上ランキング（トップ10）")
-plt.tight_layout()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.barh(top10.index, top10.values, color="#4a90e2")
+    ax.set_xlabel("Unit数")
+    ax.set_title("商品別売上ランキング（トップ10）")
+    plt.tight_layout()
 
+    buf = BytesIO()
+    fig.savefig(buf, format="png")
+    buf.seek(0)
+    encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
+    graph_url = f"data:image/png;base64,{encoded}"
 
-# Base64に変換
-buf = BytesIO()
-fig.savefig(buf, format="png")
-buf.seek(0)
-encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
-
-# さらにエンコード結果も確認
-print("Encoded:", encoded[:100])  # 先頭100文字だけでOK
-
-graph_url = f"data:image/png;base64,{encoded}"
-
-return render_template("orders.html", graph_url=graph_url)
-
+    return render_template("orders.html", graph_url=graph_url)
 
 # ローカル実行
 if __name__ == '__main__':
-port = int(os.environ.get("PORT", 5000))
-app.run(debug=True, host='0.0.0.0', port=port)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
