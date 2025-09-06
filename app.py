@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-https://github.com/SatoruMorishita/my-website/edit/main/app.py
+#https://github.com/SatoruMorishita/my-website/edit/main/app.py
 # DB設定
 DB_CONFIG = {
     "planned": {
