@@ -438,17 +438,17 @@ def generate_graph_url():
 
     # データ取得
     conn = sqlite3.connect(db_path)
-    df = pd.read_sql_query(f"SELECT 商品名, unit数 FROM {table_name}", conn)
+    df = pd.read_sql_query(f"SELECT 商品名, unit FROM {table_name}", conn)
     conn.close()
 
     # 集計してランキング化（unit数の昇順）
-    summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
+    summary = df.groupby("商品名")["unit"].sum().sort_values(ascending=True)
     top10 = summary.tail(10)
 
     # グラフ生成
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.barh(top10.index, top10.values, color="#4a90e2")
-    ax.set_xlabel("Unit数")
+    ax.set_xlabel("Unit")
     ax.set_title("商品別売上ランキング（トップ10）")
     plt.tight_layout()
 
