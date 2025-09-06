@@ -426,35 +426,9 @@ def empty_slot():
     conn.close()
     return render_template("empty_slot.html", shipments=[{"空きロケーション": r[0]} for r in rows])
 
-#注文
-@app.route('/order_summary')
-def order_summary():
-    # DB設定（注文.dbを使う前提）
-    db_path = "注文.db"
-    github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
-    table_name = "orders"  # ← 実際のテーブル名に合わせてね
-
-    # DBダウンロード
-    download_db(db_path, github_url)
-
-    # データ取得
-    conn = sqlite3.connect(db_path)
-    df = pd.read_sql_query(f"SELECT 商品カテゴリ, 注文時間 FROM {table_name}", conn)
-    conn.close()
-
-    # 日付だけ抽出（時間を除く）
-    df["注文日"] = pd.to_datetime(df["注文時間"]).dt.date
-
-    # ピボットテーブルで集計
-    pivot = pd.pivot_table(df, index="商品カテゴリ", columns="注文日", aggfunc="size", fill_value=0)
-
-    # HTML化してテンプレートに渡す
-    table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
-    return render_template("orders.html", table_html=table_html)
-
-#注文商品ランキング
-@app.route('/order_ranking')
-def orders():
+#注文↓↓↓
+# グラフ生成関数
+def generate_graph_url():
     db_path = "注文.db"
     github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
     table_name = "orders"
@@ -469,11 +443,8 @@ def orders():
 
     # 集計してランキング化（unit数の昇順）
     summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
-    # トップ10だけ抽出（unit数が多い順に並べる）
     top10 = summary.tail(10)
-    
-    # デバッグ出力を追加
-    print("Top10:", top10)
+
     # グラフ生成
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.barh(top10.index, top10.values, color="#4a90e2")
@@ -481,19 +452,41 @@ def orders():
     ax.set_title("商品別売上ランキング（トップ10）")
     plt.tight_layout()
 
-    
     # Base64に変換
     buf = BytesIO()
     fig.savefig(buf, format="png")
     buf.seek(0)
     encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
-
-    # さらにエンコード結果も確認
-    print("Encoded:", encoded[:100])  # 先頭100文字だけでOK
-    
     graph_url = f"data:image/png;base64,{encoded}"
 
-    return render_template("orders.html", graph_url=graph_url)
+    return graph_url
+
+# 注文集計表＋ランキンググラフを表示
+@app.route('/order_summary')
+def order_summary():
+    db_path = "注文.db"
+    github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
+    table_name = "orders"
+
+    # DBダウンロード
+    download_db(db_path, github_url)
+
+    # データ取得
+    conn = sqlite3.connect(db_path)
+    df = pd.read_sql_query(f"SELECT 商品カテゴリ, 注文時間 FROM {table_name}", conn)
+    conn.close()
+
+    # 日付だけ抽出
+    df["注文日"] = pd.to_datetime(df["注文時間"]).dt.date
+
+    # ピボットテーブルで集計
+    pivot = pd.pivot_table(df, index="商品カテゴリ", columns="注文日", aggfunc="size", fill_value=0)
+    table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
+
+    # グラフ生成
+    graph_url = generate_graph_url()
+
+    return render_template("orders.html", table_html=table_html, graph_url=graph_url)
 
 
 # ローカル実行
