@@ -449,7 +449,7 @@ def order_summary():
 
     # HTML化してテンプレートに渡す
     table_html = pivot.to_html(classes="table table-bordered", border=0)
-    return render_template("order_summary.html", table_html=table_html)
+    return render_template("orders.html", table_html=table_html)
 
 
 # ローカル実行
