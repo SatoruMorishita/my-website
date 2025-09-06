@@ -468,10 +468,8 @@ def orders():
 
     # 集計してランキング化（unit数の昇順）
 　　summary = df.groupby("商品名")["unit数"].sum().sort_values(ascending=True)
-
-　　# トップ10だけ抽出（unit数が多い順に並べる）
-　　top10 = summary.tail(10)
-
+    # トップ10だけ抽出（unit数が多い順に並べる）
+    top10 = summary.tail(10)
     # グラフ生成
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.barh(summary.index, summary.values, color="#4a90e2")
