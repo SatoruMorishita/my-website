@@ -6,11 +6,15 @@
     <link rel="stylesheet" href="static/css/style.css">
 
 </head>
-<body>
+ <body>
     <h1>注文集計表</h1>
   <td>
     <div>{{ table_html|safe }}</div>
   </td>
-</body>
+  <td>
+    <h2>商品別売上ランキング（unit数順）</h2>
+    <img src="{{ graph_url }}" alt="売上ランキンググラフ">
+  </td>
+ </body>
 </html>
 
