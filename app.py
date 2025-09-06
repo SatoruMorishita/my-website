@@ -458,8 +458,14 @@ def generate_graph_url():
     buf.seek(0)
     encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
     graph_url = f"data:image/png;base64,{encoded}"
-
-    return graph_url
+    
+    def generate_graph_url():
+     try:
+        # グラフ生成処理（略）
+        return graph_url
+     except Exception as e:
+        print("グラフ生成エラー:", e)
+        return None
 
 # 注文集計表＋ランキンググラフを表示
 @app.route('/order_summary')
