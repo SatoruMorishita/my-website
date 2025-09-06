@@ -5,6 +5,7 @@ import io
 import pandas as pd
 from flask import Flask, jsonify, request, render_template, send_file
 from flask_cors import CORS
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
 CORS(app)
