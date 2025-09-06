@@ -448,7 +448,7 @@ def order_summary():
     pivot = pd.pivot_table(df, index="商品カテゴリ", columns="注文日", aggfunc="size", fill_value=0)
 
     # HTML化してテンプレートに渡す
-    table_html = pivot.to_html(classes="table table-bordered", border=0)
+    table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
     return render_template("orders.html", table_html=table_html)
 
 
