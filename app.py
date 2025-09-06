@@ -453,7 +453,6 @@ def order_summary():
     return render_template("orders.html", table_html=table_html)
 
 #注文商品ランキング
-@app.route('/order_summary')
 def orders():
     db_path = "注文.db"
     github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
