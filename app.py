@@ -438,14 +438,14 @@ def order_summary():
 
     # データ取得
     conn = sqlite3.connect(db_path)
-    df = pd.read_sql_query(f"SELECT 商品カテゴリー, 注文時間 FROM {table_name}", conn)
+    df = pd.read_sql_query(f"SELECT 商品カテゴリ, 注文時間 FROM {table_name}", conn)
     conn.close()
 
     # 日付だけ抽出（時間を除く）
     df["注文日"] = pd.to_datetime(df["注文時間"]).dt.date
 
     # ピボットテーブルで集計
-    pivot = pd.pivot_table(df, index="商品カテゴリー", columns="注文日", aggfunc="size", fill_value=0)
+    pivot = pd.pivot_table(df, index="商品カテゴリ", columns="注文日", aggfunc="size", fill_value=0)
 
     # HTML化してテンプレートに渡す
     table_html = pivot.to_html(classes="table table-bordered", border=0)
