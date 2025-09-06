@@ -8,7 +8,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-
+https://github.com/SatoruMorishita/my-website/edit/main/app.py
 # DB設定
 DB_CONFIG = {
     "planned": {
@@ -472,11 +472,12 @@ def orders():
     top10 = summary.tail(10)
     # グラフ生成
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.barh(summary.index, summary.values, color="#4a90e2")
+    ax.barh(top10.index, top10.values, color="#4a90e2")
     ax.set_xlabel("Unit数")
-    ax.set_title("商品別売上ランキング")
+    ax.set_title("商品別売上ランキング（トップ10）")
     plt.tight_layout()
 
+    
     # Base64に変換
     buf = BytesIO()
     fig.savefig(buf, format="png")
