@@ -425,6 +425,33 @@ def empty_slot():
     conn.close()
     return render_template("empty_slot.html", shipments=[{"空きロケーション": r[0]} for r in rows])
 
+#注文
+@app.route('/order_summary')
+def order_summary():
+    # DB設定（注文.dbを使う前提）
+    db_path = "注文.db"
+    github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
+    table_name = "orders"  # ← 実際のテーブル名に合わせてね
+
+    # DBダウンロード
+    download_db(db_path, github_url)
+
+    # データ取得
+    conn = sqlite3.connect(db_path)
+    df = pd.read_sql_query(f"SELECT 商品カテゴリー, 注文時間 FROM {table_name}", conn)
+    conn.close()
+
+    # 日付だけ抽出（時間を除く）
+    df["注文日"] = pd.to_datetime(df["注文時間"]).dt.date
+
+    # ピボットテーブルで集計
+    pivot = pd.pivot_table(df, index="商品カテゴリー", columns="注文日", aggfunc="size", fill_value=0)
+
+    # HTML化してテンプレートに渡す
+    table_html = pivot.to_html(classes="table table-bordered", border=0)
+    return render_template("order_summary.html", table_html=table_html)
+
+
 # ローカル実行
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
