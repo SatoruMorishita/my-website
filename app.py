@@ -8,8 +8,6 @@ from flask_cors import CORS
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
-# 例：IPAexゴシックを使う
-plt.rcParams['font.family'] = 'Noto Sans CJK JP'
 
 app = Flask(__name__)
 CORS(app)
