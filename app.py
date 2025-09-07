@@ -452,7 +452,7 @@ def order_summary():
 
     # HTML化してテンプレートに渡す
     table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
-    return render_template("orders.html", table_html=table_html, graph_url=graph_url)
+    return render_template("orders.html", table_html=table_html, graph_url=None)
 
 #注文商品ランキング
 #@app.route('/orders')
@@ -492,7 +492,7 @@ def order_summary():
     
     graph_url = f"data:image/png;base64,{encoded}"
     #print("Encoded:", encoded[:100])  # 先頭100文字だけでOK
-    return render_template("orders.html", table_html=table_html, graph_url=graph_url)
+    return render_template("orders.html", table_html=None, graph_url=graph_url)
 
 
 # ローカル実行
