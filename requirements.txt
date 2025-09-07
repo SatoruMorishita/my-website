@@ -7,4 +7,6 @@ xlsxwriter
 matplotlib
 japanize-matplotlib
 setuptools
+qrcode
+python-dotenv
 
