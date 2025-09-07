@@ -8,10 +8,7 @@ from flask_cors import CORS
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
-import matplotlib.font_manager as fm
-
-# 日本語フォントを指定（環境に応じて変えてOK）
-plt.rcParams['font.family'] = 'MS Gothic'  # または 'Noto Sans CJK JP', 'Yu Gothic', 'MS Gothic' など
+import japanize_matplotlib
 
 app = Flask(__name__)
 CORS(app)
