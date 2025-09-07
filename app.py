@@ -17,19 +17,39 @@ CORS(app)
 #チェックイン関連
 
 @app.route('/checkin')
+@app.route('/checkin')
 def checkin():
     user_id = request.args.get('id')
+    status = request.args.get('status')  # "checkin" or "checkout"
+
+    if not user_id or not status:
+        return "エラー：IDまたはステータスが指定されていません", 400
+
     conn = sqlite3.connect('checkin.db')
     c = conn.cursor()
-    c.execute("INSERT INTO checkin_log (user_id, timestamp) VALUES (?, ?)", (user_id, datetime.now()))
+    c.execute("INSERT INTO checkin_log (user_id, timestamp, status) VALUES (?, ?, ?)",
+              (user_id, datetime.now(), status))
     conn.commit()
     conn.close()
-    return f"{user_id} さん、チェックイン完了しました！"
+
+    if status == "checkin":
+        return f"{user_id} さん、出勤しました！"
+    elif status == "checkout":
+        return f"{user_id} さん、退勤しました！"
+    else:
+        return f"{user_id} さん、ステータス不明です", 400
+
 
 #QRコード追加
-url = "https://my-website-xqnf.onrender.com/checkin?id=1234"
-img = qrcode.make(url)
-img.save("qr_1234.png")
+# 出勤用QRコード
+url_checkin = "https://my-website-xqnf.onrender.com/checkin?id=1234&status=checkin"
+img_checkin = qrcode.make(url_checkin)
+img_checkin.save("qr_1234_checkin.png")
+
+# 退勤用QRコード
+url_checkout = "https://my-website-xqnf.onrender.com/checkin?id=1234&status=checkout"
+img_checkout = qrcode.make(url_checkout)
+img_checkout.save("qr_1234_checkout.png")
 
 @app.route('/admin')
 def admin():
