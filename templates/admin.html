@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>チェックイン履歴</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #999; padding: 8px; text-align: left; }
+    th { background-color: #eee; }
+  </style>
+</head>
+<body>
+  <h1>チェックイン履歴</h1>
+  <table>
+    <tr><th>社員ID</th><th>チェックイン日時</th></tr>
+    {% for user_id, timestamp in logs %}
+    <tr><td>{{ user_id }}</td><td>{{ timestamp }}</td></tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
