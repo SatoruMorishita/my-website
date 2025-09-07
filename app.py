@@ -452,14 +452,14 @@ def order_summary():
 
     # HTML化してテンプレートに渡す
     table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
-    return render_template("orders.html", table_html=table_html, graph_url=None)
+    return render_template("orders.html", table_html=table_html, graph_url=graph_url)
 
 #注文商品ランキング
-@app.route('/orders')
-def orders():
-    db_path = "注文.db"
-    github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
-    table_name = "orders"
+#@app.route('/orders')
+#def orders():
+#   db_path = "注文.db"
+#    github_url = "https://raw.githubusercontent.com/SatoruMorishita/my-website/main/注文.db"
+#    table_name = "orders"
 
     # DBダウンロード
     download_db(db_path, github_url)
@@ -491,9 +491,8 @@ def orders():
     encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
     
     graph_url = f"data:image/png;base64,{encoded}"
-    # 
-    print("Encoded:", encoded[:100])  # 先頭100文字だけでOK
-    return render_template("orders.html", table_html=None, graph_url=graph_url)
+    #print("Encoded:", encoded[:100])  # 先頭100文字だけでOK
+    return render_template("orders.html", table_html=table_html, graph_url=graph_url)
 
 
 # ローカル実行
