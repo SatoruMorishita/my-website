@@ -489,12 +489,10 @@ def orders():
     fig.savefig(buf, format="png")
     buf.seek(0)
     encoded = base64.b64encode(buf.getvalue()).decode("utf-8")
-
-    # さらにエンコード結果も確認
-    print("Encoded:", encoded[:100])  # 先頭100文字だけでOK
     
     graph_url = f"data:image/png;base64,{encoded}"
-
+    # 
+    print("Encoded:", encoded[:100])  # 先頭100文字だけでOK
     return render_template("orders.html", table_html=None, graph_url=graph_url)
 
 
