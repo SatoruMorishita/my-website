@@ -11,10 +11,6 @@ import base64
 import japanize_matplotlib
 from datetime import datetime
 import qrcode
-#QRコード追加
-url = "https://your-app-name.onrender.com/checkin?id=1234"
-img = qrcode.make(url)
-img.save("qr_1234.png")
 
 app = Flask(__name__)
 CORS(app)
@@ -29,6 +25,12 @@ def checkin():
     conn.commit()
     conn.close()
     return f"{user_id} さん、チェックイン完了しました！"
+
+#QRコード追加
+url = "https://my-website-xqnf.onrender.com/checkin"
+img = qrcode.make(url)
+img.save("qr_1234.png")
+
 @app.route('/admin')
 def admin():
     conn = sqlite3.connect('checkin.db')
