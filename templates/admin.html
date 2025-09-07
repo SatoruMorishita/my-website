@@ -12,11 +12,11 @@
 <body>
   <h1>チェックイン履歴</h1>
   <table>
-    <tr><th>社員ID</th><th>チェックイン日時</th></tr>
-    {% for user_id, timestamp in logs %}
-    <tr><td>{{ user_id }}</td><td>{{ timestamp }}</td></tr>
-    {% endfor %}
-  </table>
+  <tr><th>社員ID</th><th>日時</th><th>ステータス</th></tr>
+  {% for user_id, timestamp, status in logs %}
+  <tr><td>{{ user_id }}</td><td>{{ timestamp }}</td><td>{{ status }}</td></tr>
+  {% endfor %}
+　</table>
 </body>
 </html>
 
