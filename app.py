@@ -440,7 +440,7 @@ def order_summary():
 
     # データ取得（表用）
     conn = sqlite3.connect(db_path)
-    df = pd.read_sql_query(f"SELECT 商品カテゴリ, 注文時間, 商品名, unit FROM {table_name}", conn)
+    df = pd.read_sql_query(f"SELECT 商品カテゴリ, 注文時間, 商品名, Unit FROM {table_name}", conn)
     conn.close()
 
     # 注文集計表の処理
@@ -449,7 +449,7 @@ def order_summary():
     table_html = pivot.to_html(classes="table table-bordered", border=0, index_names=False)
 
     # 売上ランキングの処理
-    summary = df.groupby("商品名")["unit"].sum().sort_values(ascending=True)
+    summary = df.groupby("商品名")["Unit"].sum().sort_values(ascending=True)
     top10 = summary.tail(10)
 
     fig, ax = plt.subplots(figsize=(10, 6))
