@@ -9,10 +9,34 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
 import japanize_matplotlib
+from datetime import datetime
+import qrcode
+#QRコード追加
+url = "https://yourdomain.com/checkin?id=1234"
+img = qrcode.make(url)
+img.save("qr_1234.png")
 
 app = Flask(__name__)
 CORS(app)
-#https://github.com/SatoruMorishita/my-website/edit/main/app.py
+#チェックイン関連
+@app.route('/checkin')
+def checkin():
+    user_id = request.args.get('id')
+    conn = sqlite3.connect('checkin.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO checkin_log (user_id, timestamp) VALUES (?, ?)", (user_id, datetime.now()))
+    conn.commit()
+    conn.close()
+    return f"{user_id} さん、チェックイン完了しました！"
+@app.route('/admin')
+def admin():
+    conn = sqlite3.connect('checkin.db')
+    c = conn.cursor()
+    c.execute("SELECT user_id, timestamp FROM checkin_log ORDER BY timestamp DESC")
+    logs = c.fetchall()
+    conn.close()
+    return render_template("admin.html", logs=logs)
+
 # DB設定
 DB_CONFIG = {
     "planned": {
