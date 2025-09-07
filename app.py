@@ -27,7 +27,7 @@ def checkin():
     return f"{user_id} さん、チェックイン完了しました！"
 
 #QRコード追加
-url = "https://my-website-xqnf.onrender.com/checkin"
+url = "https://my-website-xqnf.onrender.com/checkin?id=1234"
 img = qrcode.make(url)
 img.save("qr_1234.png")
 
