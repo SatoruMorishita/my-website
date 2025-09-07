@@ -17,7 +17,6 @@ CORS(app)
 #チェックイン関連
 
 @app.route('/checkin')
-@app.route('/checkin')
 def checkin():
     user_id = request.args.get('id')
     status = request.args.get('status')  # "checkin" or "checkout"
