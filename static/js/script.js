@@ -1,7 +1,6 @@
 //クローズボタン追加
 
 document.addEventListener("DOMContentLoaded", function () {
-  alert("クリックされたよ！");
   const closeBtn = document.getElementById('api-close-btn');
   if (closeBtn) {
     closeBtn.addEventListener('click', function () {
