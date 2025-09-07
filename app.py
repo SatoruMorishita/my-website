@@ -12,28 +12,13 @@ import japanize_matplotlib
 from datetime import datetime
 import qrcode
 #QRコード追加
-url = "https://yourdomain.com/checkin?id=1234"
+url = "https://your-app-name.onrender.com/checkin?id=1234"
 img = qrcode.make(url)
 img.save("qr_1234.png")
 
 app = Flask(__name__)
 CORS(app)
 #チェックイン関連
-def init_db():
-    conn = sqlite3.connect('checkin.db')
-    c = conn.cursor()
-    c.execute('''
-        CREATE TABLE IF NOT EXISTS checkin_log (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            user_id TEXT NOT NULL,
-            timestamp TEXT NOT NULL
-        )
-    ''')
-    conn.commit()
-    conn.close()
-
-# アプリ起動時に初期化（初回だけでOK）
-init_db()
 
 @app.route('/checkin')
 def checkin():
