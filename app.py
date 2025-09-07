@@ -55,7 +55,7 @@ img_checkout.save("qr_1234_checkout.png")
 def admin():
     conn = sqlite3.connect('checkin.db')
     c = conn.cursor()
-    c.execute("SELECT user_id, timestamp FROM checkin_log ORDER BY timestamp DESC")
+    c.execute("SELECT user_id, timestamp, status FROM checkin_log ORDER BY timestamp DESC")
     logs = c.fetchall()
     conn.close()
     return render_template("admin.html", logs=logs)
