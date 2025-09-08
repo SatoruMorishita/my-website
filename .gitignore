@@ -1,0 +1,7 @@
+# 🔐 認証情報（絶対にPushしない！）
+credentials.json
+.env
+
+# 🐍 Pythonキャッシュ
+__pycache__/
+*.pyc
