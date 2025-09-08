@@ -9,17 +9,17 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
 import japanize_matplotlib
-
+###################################################################
 from datetime import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
-
+####################################################################
 app = Flask(__name__)
 CORS(app)
-
+#####勤怠管理用コード###############################################################
 # Renderの環境変数から復元
 json_str = base64.b64decode(os.environ["GOOGLE_CREDENTIALS"]).decode("utf-8")
 with open("credentials.json", "w") as f:
@@ -103,7 +103,8 @@ def handle_message(event):
         event.reply_token,
         TextSendMessage(text=reply_text)
     )
-
+#####################################################################
+#HP
 # DB設定
 DB_CONFIG = {
     "planned": {
