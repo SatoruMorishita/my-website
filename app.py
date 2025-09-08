@@ -3,7 +3,7 @@ import requests
 import sqlite3
 import io
 import pandas as pd
-from flask import Flask, jsonify, request, render_template, send_file
+from flask import Flask, jsonify, request, render_template, send_file, abort
 from flask_cors import CORS
 import matplotlib.pyplot as plt
 from io import BytesIO
@@ -13,6 +13,10 @@ import japanize_matplotlib
 from datetime import datetime
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from linebot import LineBotApi, WebhookHandler
+from linebot.exceptions import InvalidSignatureError
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
+
 app = Flask(__name__)
 CORS(app)
 
@@ -66,7 +70,40 @@ def get_work_summary(name):
 def line_webhook():
     # LINEからのイベント処理
     return "OK"
-    
+
+# 環境変数から認証情報を取得（Renderで設定）
+CHANNEL_SECRET = os.environ.get("LINE_CHANNEL_SECRET")
+CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
+
+# LINE APIインスタンス化
+line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(CHANNEL_SECRET)
+
+# Flaskアプリ初期化
+app = Flask(__name__)
+
+# Webhook受信エンドポイント
+@app.route("/callback", methods=["POST"])
+def callback():
+    signature = request.headers["X-Line-Signature"]
+    body = request.get_data(as_text=True)
+
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        abort(400)
+
+    return "OK"
+
+# メッセージイベントの処理（オウム返し）
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    reply_text = f"「{event.message.text}」ですね！了解です🦊"
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=reply_text)
+    )
+
 # DB設定
 DB_CONFIG = {
     "planned": {
