@@ -10,54 +10,9 @@ from io import BytesIO
 import base64
 import japanize_matplotlib
 from datetime import datetime
-import qrcode
 
 app = Flask(__name__)
 CORS(app)
-#チェックイン関連
-
-@app.route('/checkin')
-def checkin():
-    user_id = request.args.get('id')
-    status = request.args.get('status')  # "checkin" or "checkout"
-
-    if not user_id or not status:
-        return "エラー：IDまたはステータスが指定されていません", 400
-
-    conn = sqlite3.connect('checkin.db')
-    c = conn.cursor()
-    c.execute("INSERT INTO checkin_log (user_id, timestamp, status) VALUES (?, ?, ?)",
-              (user_id, datetime.now(), status))
-    conn.commit()
-    conn.close()
-
-    if status == "checkin":
-        return f"{user_id} さん、出勤しました！"
-    elif status == "checkout":
-        return f"{user_id} さん、退勤しました！"
-    else:
-        return f"{user_id} さん、ステータス不明です", 400
-
-
-#QRコード追加
-# 出勤用QRコード
-url_checkin = "https://my-website-xqnf.onrender.com/checkin?id=1234&status=checkin"
-img_checkin = qrcode.make(url_checkin)
-img_checkin.save("qr_1234_checkin.png")
-
-# 退勤用QRコード
-url_checkout = "https://my-website-xqnf.onrender.com/checkin?id=1234&status=checkout"
-img_checkout = qrcode.make(url_checkout)
-img_checkout.save("qr_1234_checkout.png")
-
-@app.route('/admin')
-def admin():
-    conn = sqlite3.connect('checkin.db')
-    c = conn.cursor()
-    c.execute("SELECT user_id, timestamp, status FROM checkin_log ORDER BY timestamp DESC")
-    logs = c.fetchall()
-    conn.close()
-    return render_template("admin.html", logs=logs)
 
 # DB設定
 DB_CONFIG = {
