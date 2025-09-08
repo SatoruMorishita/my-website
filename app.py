@@ -9,10 +9,54 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
 import japanize_matplotlib
-from datetime import datetime
 
+from datetime import datetime
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 app = Flask(__name__)
 CORS(app)
+
+#勤怠管理用
+# 認証スコープ
+scope = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/drive"
+]
+
+# 認証情報の読み込み（JSONファイルは.gitignore推奨）
+creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+client = gspread.authorize(creds)
+
+# スプレッドシートとシートに接続
+sheet = client.open("勤怠管理").worksheet("勤怠")
+
+# 出勤打刻
+def record_clock_in(name):
+    now = datetime.now().strftime("%Y/%m/%d %H:%M")
+    sheet.append_row([now.split()[0], name, now.split()[1], "", "", "出勤"])
+
+# 退勤打刻（最後の出勤行を更新）
+def record_clock_out(name):
+    records = sheet.get_all_records()
+    for i in reversed(range(len(records))):
+        if records[i]["名前"] == name and records[i]["退勤時間"] == "":
+            row_index = i + 2  # ヘッダー分オフセット
+            now = datetime.now().strftime("%H:%M")
+            sheet.update_cell(row_index, 4, now)
+            sheet.update_cell(row_index, 6, "退勤")
+            break
+
+def get_work_summary(name):
+    records = sheet.get_all_records()
+    total_minutes = 0
+    for row in records:
+        if row["名前"] == name and row["出勤時間"] and row["退勤時間"]:
+            in_time = datetime.strptime(row["出勤時間"], "%H:%M")
+            out_time = datetime.strptime(row["退勤時間"], "%H:%M")
+            total_minutes += int((out_time - in_time).total_seconds() / 60)
+    hours = total_minutes // 60
+    minutes = total_minutes % 60
+    return f"{name}さんの今月の勤務時間は {hours}時間{minutes}分 です"
 
 # DB設定
 DB_CONFIG = {
