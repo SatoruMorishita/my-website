@@ -16,6 +16,11 @@ from oauth2client.service_account import ServiceAccountCredentials
 app = Flask(__name__)
 CORS(app)
 
+# Renderの環境変数から復元
+json_str = base64.b64decode(os.environ["GOOGLE_CREDENTIALS"]).decode("utf-8")
+with open("credentials.json", "w") as f:
+    f.write(json_str)
+    
 #勤怠管理用
 # 認証スコープ
 scope = [
