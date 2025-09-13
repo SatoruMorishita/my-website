@@ -349,6 +349,9 @@ body.about-page{
   cursor: pointer;
 }
 
+.faq-page .faq-item {
+  overflow: hidden;
+}
 .faq-page .faq-answer {
   max-height: 0;
   opacity: 0;
