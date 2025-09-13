@@ -1,19 +1,31 @@
-<form id="contactForm" class="contact-form">
-  <label for="name">お名前：</label>
-  <input type="text" id="name" name="name" required>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>問い合わせフォーム</title>
+</head>
+ <body>
 
-  <label for="email">メールアドレス：</label>
-  <input type="email" id="email" name="email" required>
+  <form id="contactForm" class="contact-form">
+   <label for="name">お名前：</label>
+   <input type="text" id="name" name="name" required>
 
-  <label for="subject">件名：</label>
-  <select id="subject" name="subject">
+   <label for="email">メールアドレス：</label>
+   <input type="email" id="email" name="email" required>
+
+   <label for="subject">件名：</label>
+   <select id="subject" name="subject">
     <option value="質問">質問</option>
     <option value="要望">要望</option>
     <option value="その他">その他</option>
-  </select>
+   </select>
 
-  <label for="message">お問い合わせ内容：</label>
-  <textarea id="message" name="message" required></textarea>
+   <label for="message">お問い合わせ内容：</label>
+   <textarea id="message" name="message" required></textarea>
 
-  <button type="submit">送信</button>
-</form>
+   <button type="submit">送信</button>
+  </form>
+  <script src="js/script.js"></script>
+ </body>
+</html>
