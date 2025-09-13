@@ -275,17 +275,21 @@ label {
   display: block;
   margin-top: 1em;
 }
-/*input, select, textarea {
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
   width: 100%;
   padding: 0.5em;
   margin-top: 0.5em;
 }
-button {
+
+.contact-form button {
   margin-top: 1em;
   padding: 0.7em 1.5em;
   background-color: #0078d4;
   color: white;
   border: none;
   border-radius: 4px;
-}*/
+  cursor: pointer;
+}
 
