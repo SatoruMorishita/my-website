@@ -8,3 +8,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+//toiawase
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  // 入力値の取得
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const subject = document.getElementById("subject").value;
+  const message = document.getElementById("message").value;
+
+  // ここでfetchなどを使ってバックエンドに送信する
+  // 今は仮で完了メッセージを表示
+  document.getElementById("responseMessage").textContent = "お問い合わせありがとうございます！";
+});
