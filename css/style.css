@@ -264,6 +264,31 @@ body.about-page{
   border-color: red;
 }
 
+ #api-close-btn {
+ position: fixed;
+  top: 10px;
+  right: 15px;
+  left: auto; /* ← 明示的に左を解除 */
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px; /* ← heightと一致させると中央揃え */
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+#api-close-btn:hover {
+  background-color: #f0f0f0;
+  color: red;
+  border-color: red;
+}
 .contact-form {
   max-width: 600px;
   margin: auto;
