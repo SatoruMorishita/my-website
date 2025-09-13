@@ -12,16 +12,14 @@
    <p>下記問い合わせ内容をご記入ください。問い合わせには時間がかかることがあります。予めご了承ください</p>
 
    <fieldset>
-    <legend>ご相談内容（複数選択可）<span style="color:red;">※必須</span></legend>
-    <label><input type="checkbox" name="request" value="仕様がわからない"> 仕様がわからない</label><br>
-    <label><input type="checkbox" name="request" value="エラーや故障">エラーや故障</label><br>
-    <label><input type="checkbox" name="request" value="詳しい資料が欲しい">詳しい資料が欲しい</label><br>
-    <label><input type="checkbox" name="request" value="見積りを希望する"> 見積りを希望する</label><br>
+    <legend>問い合わせ内容（複数選択可）<span style="color:red;">※必須</span></legend>
+    <label><input type="checkbox" name="request" value="操作方法がわからない">操作方法がわからない</label><br>
+    <label><input type="checkbox" name="request" value="データが正しく表示されない／反映されない">データが正しく表示されない／反映されない</label><br>
+    <label><input type="checkbox" name="request" value="機能追加・改善の要望">機能追加・改善の要望</label><br>
+    <label><input type="checkbox" name="request" value="帳票・レポートの出力について相談したい">帳票・レポートの出力について相談したい</label><br>
+    <label><input type="checkbox" name="request" value="他システムとの連携について相談したい">他システムとの連携について相談したい</label>
     <label><input type="checkbox" name="request" value="その他"> その他</label>
    </fieldset>
-
-   <label for="time">ご相談希望時間<span style="color:red;">※必須</span></label>
-   <input type="text" id="time" name="time" placeholder="例：平日10時〜12時" required>
 
    <label for="name">お名前</label>
    <input type="text" id="name" name="name" placeholder="例：山田太郎">
@@ -29,7 +27,7 @@
    <label for="email">メールアドレス</label>
    <input type="email" id="email" name="email" placeholder="例：taro@example.com">
 
-   <label for="message">その他ご要望</label>
+   <label for="message">問い合わせ詳細</label>
    <textarea id="message" name="message" placeholder="自由記入欄です"></textarea>
 
    <button type="submit">送信</button>
