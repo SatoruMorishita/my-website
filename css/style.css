@@ -349,15 +349,11 @@ body.about-page{
   cursor: pointer;
 }
 
-.faq-page .faq-item {
-  overflow: hidden;
-}
-
 .faq-page .faq-answer {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
+  transition: max-height 1.2s ease, opacity 1.2s ease, padding 1.2s ease;
   padding: 0 1em;
   background-color: #fff8dc;
   border-left: 4px solid #0078d4;
@@ -369,7 +365,7 @@ body.about-page{
 }
 
 .faq-page .faq-item:hover .faq-answer {
-  max-height: 500px; /* 十分な高さにしておく */
+  max-height: 500px;
   opacity: 1;
   padding: 1em;
 }
