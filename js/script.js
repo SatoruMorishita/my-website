@@ -169,3 +169,17 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
   // 今は仮で完了メッセージを表示
   document.getElementById("responseMessage").textContent = "お問い合わせありがとうございます！";
 });
+//FAQ
+document.addEventListener("DOMContentLoaded", function () {
+  const questions = document.querySelectorAll(".faq-question");
+
+  questions.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const answer = this.nextElementSibling;
+      const isVisible = answer.style.display === "block";
+      document.querySelectorAll(".faq-answer").forEach(a => a.style.display = "none");
+      answer.style.display = isVisible ? "none" : "block";
+    });
+  });
+});
+
