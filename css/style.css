@@ -110,6 +110,21 @@
 
 
 /*about.html*/
+@keyframes wipeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-content {
+  animation: wipeIn 0.8s ease-out;
+}
+
 body.about-page {
   margin: 10px;
   font-family: Noto Sans JP;
