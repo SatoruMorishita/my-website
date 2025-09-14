@@ -252,6 +252,24 @@ body.about-page {
 .pink { background-color: #ffe0f0; }
 .purple { background-color: #f0e0ff; }
 .orange { background-color: #fff0d4; }
+.card-button.red {
+  background: linear-gradient(145deg, #ffdddd, #e6bcbc);
+}
+.card-button.green {
+  background: linear-gradient(145deg, #ddffdd, #bce6bc);
+}
+.card-button.yellow {
+  background: linear-gradient(145deg, #ffffdd, #e6e6b4);
+}
+.card-button.pink {
+  background: linear-gradient(145deg, #ffe0f0, #e6b8c8);
+}
+.card-button.purple {
+  background: linear-gradient(145deg, #f0e0ff, #d8c0e6);
+}
+.card-button.orange {
+  background: linear-gradient(145deg, #fff0d4, #e6c8a8);
+}
 
 #pageCloseButton {
   position: fixed;
