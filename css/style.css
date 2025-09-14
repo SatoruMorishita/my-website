@@ -13,17 +13,7 @@
 body.page-animate {
   animation: pageWipe 0.8s ease-out;
 }
-@keyframes flipHourglass {
-  0%, 49% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
-}
+
 .sand-clock {
   width: 60px;
   height: 100px;
