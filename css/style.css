@@ -222,21 +222,30 @@ body.about-page {
   background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 6px 12px rgba(0, 0, 0, 0.15),
+    0 12px 24px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-weight: bold;
   font-size: 18px;
   color: #333;
-  transition: 0.3s;
+  transition: 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .card-button:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    0 12px 24px rgba(0, 0, 0, 0.2),
+    0 20px 40px rgba(0, 0, 0, 0.15);
   background-color: #f0f8ff;
-  transform: translateY(-3px);
 }
+
 
 /* 色分けクラス */
 .red { background-color: #ffdddd; }
