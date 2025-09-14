@@ -22,7 +22,7 @@ body.page-animate {
   }
 }
 
-.hourglass {
+.loading {
   display: inline-block;
   animation: rotateHourglass 1s linear infinite;
 }
