@@ -19,15 +19,20 @@ body.page-animate {
   height: 100px;
   position: relative;
   margin: 0 auto;
-  background-color: #fdf6e3;
-  overflow: hidden;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  background: radial-gradient(circle at center, #fdf6e3 0%, #e6d8b0 100%);
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(0, 0, 0, 0.2);
   clip-path: polygon(
-  0% 0%, 100% 0%,     /* 上の左右 */
-  50% 50%,            /* 中央右（交点） */
-  100% 100%, 0% 100%, /* 下の左右 */
-  50% 50%             /* 中央左（交点） */
-);
+    0% 0%, 100% 0%,
+    50% 50%,
+    100% 100%, 0% 100%,
+    50% 50%
+  );
+  border: 2px solid #8b6f3f;
+  border-radius: 10px;
+}
+
 
 }
 
@@ -35,8 +40,9 @@ body.page-animate {
 .top-sand, .bottom-sand {
   position: absolute;
   width: 100%;
-  background-color: #c2a664;
+  background: linear-gradient(to bottom, #d4b26b, #a67c52);
 }
+
 
 .top-sand {
   top: 0;
