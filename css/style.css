@@ -96,20 +96,24 @@ body.page-animate {
     inset -1px -1px 2px rgba(0, 0, 0, 0.1);
   background: linear-gradient(145deg, #3399ff, #0070c0);
 }
-    #loading {
-     display: none;
-     position: fixed;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     font-size: 24px;
-     font-weight: bold;
-     background-color: rgba(255, 255, 255, 0.9);
-     padding: 20px 40px;
-     border-radius: 10px;
-     box-shadow: 0 0 10px rgba(0,0,0,0.3);
-     z-index: 9999;
-    }
+#loading {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 60%; /* ← 中央より右に寄せる */
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  z-index: 9999;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 
    #index-close-btn {
  position: fixed;
