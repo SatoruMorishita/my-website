@@ -118,13 +118,14 @@ body.about-page {
 
 .top-menu {
   background-color: #0078d4;
-  padding: 10px 20px;
+  padding: 20px 30px; /* ← 上下の余白を広げることで高さが出る */
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
 }
+
 
 
 .nav-bar {
