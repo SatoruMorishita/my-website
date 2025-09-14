@@ -23,6 +23,7 @@ body.page-animate {
   border-radius: 10px;
   background-color: #fdf6e3;
   overflow: hidden;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
 }
 
 .top-sand, .bottom-sand {
