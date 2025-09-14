@@ -24,11 +24,6 @@ body.page-animate {
     transform: rotate(180deg);
   }
 }
-
-.hourglass {
-  display: inline-block;
-  animation: flipHourglass 2s ease-in-out infinite;
-}
 .sand-clock {
   width: 60px;
   height: 100px;
