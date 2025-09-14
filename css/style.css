@@ -19,9 +19,9 @@ body.page-animate {
   height: 100px;
   position: relative;
   margin: 0 auto;
-  background: radial-gradient(circle at center, #fdf6e3 0%, #e6d8b0 100%);
+  background-color: white; /* ← 空の部分を白に */
   box-shadow:
-    inset 0 0 10px rgba(255, 255, 255, 0.5),
+    inset 0 0 10px rgba(255, 255, 255, 0.6),
     0 0 10px rgba(0, 0, 0, 0.2);
   clip-path: polygon(
     0% 0%, 100% 0%,
@@ -29,7 +29,10 @@ body.page-animate {
     100% 100%, 0% 100%,
     50% 50%
   );
-  border: 2px solid #8b6f3f;
+  border-top: 10px solid #8b6f3f;   /* ← 上の辺を太く＆色変更 */
+  border-bottom: 10px solid #8b6f3f; /* ← 下の辺も同様に */
+  border-left: 2px solid #a67c52;
+  border-right: 2px solid #a67c52;
   border-radius: 10px;
 }
 
@@ -38,7 +41,6 @@ body.page-animate {
   width: 100%;
   background: linear-gradient(to bottom, #d4b26b, #a67c52);
 }
-
 
 .top-sand {
   top: 0;
@@ -52,6 +54,7 @@ body.page-animate {
   animation: fillSand 5s linear infinite;
 }
 
+
 .neck {
   position: absolute;
   top: 48%;
@@ -63,6 +66,7 @@ body.page-animate {
   border-radius: 50%;
   box-shadow: 0 0 4px rgba(0,0,0,0.3);
 }
+
 
 @keyframes drainSand {
   0% { height: 50%; }
