@@ -1,7 +1,7 @@
 /*index.html*/
   body.index-page{
       background-color: #f5f5dc;
-      font-family: sans-serif;
+      font-family: Noto Sans JP;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -110,7 +110,7 @@
 /*about.html*/
 body.about-page {
   margin: 10px;
-  font-family: sans-serif;
+  font-family: Noto Sans JP;
   background-color: #f5f5dc;
 }
 
