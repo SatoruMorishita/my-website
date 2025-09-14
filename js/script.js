@@ -93,7 +93,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
       alert("該当する項目が見つかりませんでした。");
     }
   }
-*/
+
 document.body.addEventListener("click", function (event) {
   // 検索ボックスや検索ボタンをクリックした場合は除外
   const isSearchRelated =
@@ -107,12 +107,12 @@ document.body.addEventListener("click", function (event) {
   });
 });
 
-
 document.getElementById("searchInput").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       highlightAll();
     }
   });
+*/
 //追加8/30
 function loadPlanData() {
   console.log("loadPlanData() が呼ばれました");
