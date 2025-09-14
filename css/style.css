@@ -13,27 +13,37 @@
 body.page-animate {
   animation: pageWipe 0.8s ease-out;
 }
+.sand-clock::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid #5c4422; /* 濃いめの枠色で強調 */
+  border-radius: 10px;
+  pointer-events: none;
+  box-shadow: 0 0 4px rgba(0,0,0,0.4); /* 立体感を追加 */
+}
+
 
 .sand-clock {
-  width: 60px;
-  height: 100px;
-  position: relative;
-  margin: 0 auto;
-  background-color: white; /* ← 空の部分を白に */
-  box-shadow:
-    inset 0 0 10px rgba(255, 255, 255, 0.6),
-    0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: white; /* 空の部分を明るく */
   clip-path: polygon(
     0% 0%, 100% 0%,
     50% 50%,
     100% 100%, 0% 100%,
     50% 50%
   );
-  border-top: 10px solid #8b6f3f;   /* ← 上の辺を太く＆色変更 */
-  border-bottom: 10px solid #8b6f3f; /* ← 下の辺も同様に */
+  position: relative;
+  margin: 0 auto;
+  width: 60px;
+  height: 100px;
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.6),
+    0 0 10px rgba(0, 0, 0, 0.2);
+
+  border-top: 12px solid #5c4422;
+  border-bottom: 12px solid #5c4422;
   border-left: 2px solid #a67c52;
   border-right: 2px solid #a67c52;
-  border-radius: 10px;
 }
 
 .top-sand, .bottom-sand {
