@@ -41,6 +41,7 @@
     }
 
     .login-box button {
+  margin-top: 30px; /* ← ここで下にずらす */
   padding: 12px 24px;
   font-size: 18px;
   font-weight: bold;
@@ -56,6 +57,7 @@
   cursor: pointer;
   transition: 0.3s ease;
 }
+
 
 .login-box button:hover {
   transform: translateY(-3px);
