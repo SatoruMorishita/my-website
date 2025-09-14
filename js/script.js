@@ -1,4 +1,15 @@
 //FAQ
+//クローズボタン追加
+
+document.addEventListener("DOMContentLoaded", function () {
+  const closeBtn = document.getElementById('api-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function () {
+      window.location.href = 'about.html';
+    });
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const questions = document.querySelectorAll(".faq-question");
 
@@ -156,17 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   } else {
     console.warn("planButton が見つかりません");
-  }
-});
-
-//クローズボタン追加
-
-document.addEventListener("DOMContentLoaded", function () {
-  const closeBtn = document.getElementById('api-close-btn');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function () {
-      window.location.href = 'about.html';
-    });
   }
 });
 
