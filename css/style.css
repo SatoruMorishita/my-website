@@ -13,18 +13,21 @@
 body.page-animate {
   animation: pageWipe 0.8s ease-out;
 }
-@keyframes rotateHourglass {
-  0% {
+@keyframes flipHourglass {
+  0%, 49% {
     transform: rotate(0deg);
   }
+  50% {
+    transform: rotate(180deg);
+  }
   100% {
-    transform: rotate(360deg);
+    transform: rotate(180deg);
   }
 }
 
 .loading {
   display: inline-block;
-  animation: rotateHourglass 1s linear infinite;
+  animation: flipHourglass 2s ease-in-out infinite;
 }
 
   body.index-page{
