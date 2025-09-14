@@ -19,12 +19,16 @@ body.page-animate {
   height: 100px;
   position: relative;
   margin: 0 auto;
-  border: 2px solid #333;
-  border-radius: 10px;
   background-color: #fdf6e3;
   overflow: hidden;
   box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    70% 50%, 100% 100%,
+    0% 100%, 30% 50%
+  );
 }
+
 
 .top-sand, .bottom-sand {
   position: absolute;
