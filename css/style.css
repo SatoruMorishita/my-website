@@ -219,13 +219,12 @@ body.about-page {
 }
 
 .card-button {
-  background-color: #ffffff;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
   border-radius: 12px;
   padding: 20px;
   box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 6px 12px rgba(0, 0, 0, 0.15),
-    0 12px 24px rgba(0, 0, 0, 0.1);
+    6px 6px 12px rgba(0, 0, 0, 0.2),
+    -6px -6px 12px rgba(255, 255, 255, 0.6);
   text-align: center;
   font-weight: bold;
   font-size: 18px;
@@ -235,15 +234,14 @@ body.about-page {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid #ccc;
 }
-
 .card-button:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow:
-    0 4px 8px rgba(0, 0, 0, 0.15),
-    0 12px 24px rgba(0, 0, 0, 0.2),
-    0 20px 40px rgba(0, 0, 0, 0.15);
-  background-color: #f0f8ff;
+    8px 8px 16px rgba(0, 0, 0, 0.25),
+    -4px -4px 8px rgba(255, 255, 255, 0.5);
+  background: linear-gradient(145deg, #f0f0f0, #dcdcdc);
 }
 
 
