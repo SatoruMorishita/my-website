@@ -29,6 +29,56 @@ body.page-animate {
   display: inline-block;
   animation: flipHourglass 2s ease-in-out infinite;
 }
+.sand-clock {
+  width: 60px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #fdf6e3;
+  overflow: hidden;
+}
+
+.top-sand, .bottom-sand {
+  position: absolute;
+  width: 100%;
+  background-color: #c2a664;
+}
+
+.top-sand {
+  top: 0;
+  height: 50%;
+  animation: drainSand 5s linear forwards;
+}
+
+.bottom-sand {
+  bottom: 0;
+  height: 0%;
+  animation: fillSand 5s linear forwards;
+}
+
+.neck {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 4px;
+  background-color: #c2a664;
+  border-radius: 50%;
+}
+
+@keyframes drainSand {
+  0% { height: 50%; }
+  100% { height: 0%; }
+}
+
+@keyframes fillSand {
+  0% { height: 0%; }
+  100% { height: 50%; }
+}
+
 
   body.index-page{
       background-color: #f5f5dc;
