@@ -49,13 +49,13 @@ body.page-animate {
 .top-sand {
   top: 0;
   height: 50%;
-  animation: drainSand 5s linear forwards;
+  animation: drainSand 5s linear infinite;
 }
 
 .bottom-sand {
   bottom: 0;
   height: 0%;
-  animation: fillSand 5s linear forwards;
+  animation: fillSand 5s linear infinite;
 }
 
 .neck {
