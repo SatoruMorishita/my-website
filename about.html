@@ -16,11 +16,11 @@
         <li><a href="/my-website/faq.html">FAQ</a></li>
         <li><a href="/my-website/toiawase.html">問い合わせ</a></li>
         <li class="search-wrapper">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="検索...">
-      <button onclick="highlightAll()">検索</button>
-    </div>
-  </li>
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="検索...">
+            <button onclick="highlightAll()">検索</button>
+          </div>
+        </li>
       </ul>
     </nav>
   </header>
@@ -37,61 +37,47 @@
         <li><a href="#" onclick="logout()">ログアウト</a></li>
       </ul>
     </aside>
+
     <!-- メインコンテンツ -->
     <div class="content-area">
       <div class="header-box">Order Date</div>
-      
       <div class="container">
         <a href="https://my-website-xqnf.onrender.com/unplanned">
-          <div class="circle">未プラン</div>
+          <div class="card-button red">未プラン</div>
         </a>
         <a href="https://my-website-xqnf.onrender.com/">
-          <div class="circle">プラン済み</div>
+          <div class="card-button green">プラン済み</div>
         </a>
         <a href="https://my-website-xqnf.onrender.com/inventory">
-          <div class="circle">在庫</div>
+          <div class="card-button yellow">在庫</div>
         </a>  
         <a href="https://my-website-xqnf.onrender.com/unplanned-item">
-          <div class="circle">未プラン在庫</div>
+          <div class="card-button red">未プラン在庫</div>
         </a>  
         <a href="https://my-website-xqnf.onrender.com/shortage">
-          <div class="circle">Short</div>
+          <div class="card-button pink">Short</div>
         </a>  
         <a href="https://my-website-xqnf.onrender.com/empty-slot">
-          <div class="circle">空きロケーション</div>
+          <div class="card-button purple">空きロケーション</div>
         </a>  
         <a href="https://my-website-xqnf.onrender.com/today-shipping">
-          <div class="circle">当日出荷表</div>
+          <div class="card-button orange">当日出荷表</div>
         </a>
         <a href="https://my-website-xqnf.onrender.com/tommorrow-shipping">
-          <div class="circle">翌日出荷表</div>
+          <div class="card-button orange">翌日出荷表</div>
         </a>
       </div>
     </div>
   </div>
+
   <div id="pageCloseButton" onclick="logout()">×</div>
+
   <div id="dataModal" style="display:none;">
-  <h2 id="modalTitle"></h2>
-  <div id="modalData"></div>
-  <button onclick="closeModal()">閉じる</button>
-</div>
+    <h2 id="modalTitle"></h2>
+    <div id="modalData"></div>
+    <button onclick="closeModal()">閉じる</button>
+  </div>
+
   <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
