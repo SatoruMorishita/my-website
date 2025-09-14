@@ -219,12 +219,14 @@ body.about-page {
 }
 
 .card-button {
-  background: linear-gradient(145deg, #ffffff, #e6e6e6);
-  border-radius: 12px;
+  background: #e0e0e0;
+  border-radius: 16px;
   padding: 20px;
   box-shadow:
-    6px 6px 12px rgba(0, 0, 0, 0.2),
-    -6px -6px 12px rgba(255, 255, 255, 0.6);
+    8px 8px 16px rgba(0, 0, 0, 0.3),
+    -8px -8px 16px rgba(255, 255, 255, 0.6),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.5),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   font-weight: bold;
   font-size: 18px;
@@ -234,16 +236,16 @@ body.about-page {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #ccc;
+  border: none;
 }
 .card-button:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow:
-    8px 8px 16px rgba(0, 0, 0, 0.25),
-    -4px -4px 8px rgba(255, 255, 255, 0.5);
-  background: linear-gradient(145deg, #f0f0f0, #dcdcdc);
+    12px 12px 24px rgba(0, 0, 0, 0.35),
+    -6px -6px 12px rgba(255, 255, 255, 0.5),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.4),
+    inset -1px -1px 2px rgba(0, 0, 0, 0.1);
 }
-
 
 /* 色分けクラス */
 .red { background-color: #ffdddd; }
