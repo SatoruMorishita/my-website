@@ -100,7 +100,7 @@ body.page-animate {
   display: none;
   position: fixed;
   top: 50%;
-  left: 60%; /* ← 中央より右に寄せる */
+  left: 50%; /* ← 中央より右に寄せる */
   transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.95);
   padding: 30px 40px;
