@@ -13,79 +13,17 @@
 body.page-animate {
   animation: pageWipe 0.8s ease-out;
 }
-.sand-clock::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 2px solid #5c4422; /* 濃いめの枠色で強調 */
-  border-radius: 10px;
-  pointer-events: none;
-  box-shadow: 0 0 4px rgba(0,0,0,0.4); /* 立体感を追加 */
-}
-
-
-.sand-clock {
-  background-color: white; /* 空の部分を明るく */
-  clip-path: polygon(
-    0% 0%, 100% 0%,
-    50% 50%,
-    100% 100%, 0% 100%,
-    50% 50%
-  );
-  position: relative;
-  margin: 0 auto;
+.hourglass-image {
   width: 60px;
-  height: 100px;
-  box-shadow:
-    inset 0 0 10px rgba(255, 255, 255, 0.6),
-    0 0 10px rgba(0, 0, 0, 0.2);
-
-  border-top: 12px solid #5c4422;
-  border-bottom: 12px solid #5c4422;
-  border-left: 2px solid #a67c52;
-  border-right: 2px solid #a67c52;
+  height: auto;
+  margin-bottom: 10px;
 }
 
-.top-sand, .bottom-sand {
-  position: absolute;
-  width: 100%;
-  background: linear-gradient(to bottom, #d4b26b, #a67c52);
-}
-
-.top-sand {
-  top: 0;
-  height: 50%;
-  animation: drainSand 5s linear infinite;
-}
-
-.bottom-sand {
-  bottom: 0;
-  height: 0%;
-  animation: fillSand 5s linear infinite;
-}
-
-
-.neck {
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
-  background-color: #a67c52;
-  border-radius: 50%;
-  box-shadow: 0 0 4px rgba(0,0,0,0.3);
-}
-
-
-@keyframes drainSand {
-  0% { height: 50%; }
-  100% { height: 0%; }
-}
-
-@keyframes fillSand {
-  0% { height: 0%; }
-  100% { height: 50%; }
+.loading-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
 }
 
 
