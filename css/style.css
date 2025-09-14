@@ -25,7 +25,7 @@ body.page-animate {
   }
 }
 
-.loading {
+.hourglass {
   display: inline-block;
   animation: flipHourglass 2s ease-in-out infinite;
 }
