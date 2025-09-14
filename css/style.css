@@ -188,7 +188,7 @@ body.about-page {
 .side-menu {
   width: 200px;
   padding: 30px;
-  margin-top: 25px; /* ← トップメニューの高さ＋余白分だけ下げる */
+  margin-top: 20px; /* ← トップメニューの高さ＋余白分だけ下げる */
 }
 
 .side-menu h3 {
@@ -233,7 +233,7 @@ body.about-page {
   background-color: #f5f5dc;
   padding: 7px;
   border-bottom: 2px solid #ccc;
-  margin-top: 25px; /* ← ここでトップメニューとの間隔を調整 */
+  margin-top: 20px; /* ← ここでトップメニューとの間隔を調整 */
 }
 
 .container {
