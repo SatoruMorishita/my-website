@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 //about.html
+/*
 document.getElementById("searchInput").addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       highlightAll();
@@ -51,7 +52,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
   function hello() {
     alert("作成中、もうしばらくお待ちください。");
   }
-
+*/
   function logout() {
   const confirmLogout = confirm("ログアウトします。よろしいですか？");
   if (confirmLogout) {
@@ -62,7 +63,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
     console.log("ログアウトをキャンセルしました。");
   }
 }
-
+/*
   function highlightAll() {
     const keyword = document.getElementById("searchInput").value.trim();
     if (!keyword) return;
@@ -92,7 +93,7 @@ document.getElementById("searchInput").addEventListener("keydown", function(even
       alert("該当する項目が見つかりませんでした。");
     }
   }
-
+*/
 document.body.addEventListener("click", function (event) {
   // 検索ボックスや検索ボタンをクリックした場合は除外
   const isSearchRelated =
