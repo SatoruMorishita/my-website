@@ -188,7 +188,7 @@ body.about-page {
 .side-menu {
   width: 200px;
   padding: 30px;
-  margin-top: 80px; /* ← トップメニューの高さ＋余白分だけ下げる */
+  margin-top: 10px; /* ← トップメニューの高さ＋余白分だけ下げる */
 }
 
 .side-menu h3 {
