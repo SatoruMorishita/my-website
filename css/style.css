@@ -493,7 +493,7 @@ body.ready-page{
       margin-bottom: 30px;
       line-height: 1.6;
     }
-.image.ready-page{
+image.ready-page{
       max-width: 300px;
       margin: 0 auto;
     }
