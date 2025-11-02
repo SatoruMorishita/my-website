@@ -49,7 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 //クローズボタン追加
  document.getElementById('index-close-btn').addEventListener('click', function() {
-    window.location.href = 'https://github.com/satorumorishita/my-website';
+    window.close();
+   // window.location.href = 'https://github.com/satorumorishita/my-website';
   });
 
 //about.html
