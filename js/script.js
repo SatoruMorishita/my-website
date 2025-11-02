@@ -48,11 +48,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 //クローズボタン追加
- document.getElementById('index-close-btn').addEventListener('click', function() {
-    window.close();
+//document.getElementById('index-close-btn').addEventListener('click', function() {
+    //window.close();
    // window.location.href = 'https://github.com/satorumorishita/my-website';
+  //});
+document.getElementById('index-close-btn').addEventListener('click', function () {
+    if (confirm('このウィンドウを閉じますか？')) {
+      window.close();
+    }
   });
-
 //about.html
 /*
 document.getElementById("searchInput").addEventListener("keydown", function(event) {
