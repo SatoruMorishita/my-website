@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>注文入力状況</title>
-    <link rel="stylesheet" href="static/css/style.css">
-
+　<meta charset="UTF-8">
+　<title>注文入力状況</title>
+　<link rel="stylesheet" href="static/css/style.css">
 </head>
- <body class="push-animate">
+<body class="push-animate">
   <button id="api-close-btn" class="api-close-btn">×</button>
   <h1>注文集計表</h1>
   <td>
     <div>{{ table_html|safe }}</div>
   </td>
     <h2>商品別売上ランキング（unit数順）</h2>
-{% if graph_url %}
+　{% if graph_url %}
     <img src="{{ graph_url }}" alt="売上ランキンググラフ">
-{% else %}
+　{% else %}
     <p>グラフの読み込みに失敗しました。</p>
-{% endif %}
-<script src="static/js/script.js"></script>
- </body>
+　{% endif %}
+　<script src="static/js/script.js"></script>
+</body>
 </html>
 
